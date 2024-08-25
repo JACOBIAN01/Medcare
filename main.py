@@ -9,6 +9,14 @@ class Patient_Welcome_Page:
         p_window.title("MedCare Plus Patient")
         p_window.geometry("1000x600")
         p_window.config(background='lightblue')
+        
+        def back():
+            p_window.destroy()
+            MainPage() 
+
+        #button
+        Back = Button(text="Back",command=back)
+        Back.pack()
 
         p_window.mainloop()
 
