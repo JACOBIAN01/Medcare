@@ -13,6 +13,10 @@ class Patient_Welcome_Page:
         def back():
             p_window.destroy()
             MainPage() 
+        
+        #Header
+        Header = Label(text="Patient Dashboard")
+        Header.pack()
 
         #button
         Back = Button(text="Back",command=back)
@@ -31,6 +35,9 @@ class Doctor_Welcome_Page:
         def Back():
             d_window.destroy()
             MainPage()
+        #Header
+        Header = Label(text="Patient Dashboard")
+        Header.pack()
 
         #Button
         BackButton = Button(text="Back",command=Back)
