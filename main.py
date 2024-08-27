@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from PIL import Image , ImageTk
 
 class Patient_Welcome_Page:
 
@@ -54,6 +55,15 @@ class MainPage:
         window.config(background="lightblue")
         icon = PhotoImage(file="MedCare Logo.png")
         window.iconphoto(False, icon)       
+        #Image
+        image = Image.open("Welcome_Image.jpg")
+        photo = ImageTk.PhotoImage(image)
+        
+        #Canvas
+        canvas = Canvas(window,width=1000,height=400)
+        canvas.pack()
+        canvas.create_image(0,0,anchor=NW,image=photo)
+
 
         #FUnctions
         def Doctor():
