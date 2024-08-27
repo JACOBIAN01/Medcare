@@ -49,11 +49,12 @@ class MainPage:
     def __init__(self):
         # Window setup
         window = Tk()
-        window.title("MedCare Plus")
+        window.title("MedCare Plus-Welcome")
         window.geometry("1000x600")
-        window.config(background='lightblue')
+        window.config(background="lightblue")
         icon = PhotoImage(file="MedCare Logo.png")
-        window.iconphoto(False, icon)
+        window.iconphoto(False, icon)       
+
         #FUnctions
         def Doctor():
             window.destroy()
@@ -61,16 +62,18 @@ class MainPage:
         def Patient():
             window.destroy()
             Patient_Welcome_Page()
+
         #Label:
-        Header = Label(text="Welcome to Medcare Portal")
+        Header = Label(window,text="Welcome to Medcare Portal",font=("Helvetica",14))
         Header.pack()
-        Header2 = Label(text="Please Choose who you are !")
+        Header2 = Label(window,text="Please Choose who you are !",font=("Helvetica",14))
         Header2.pack()
 
         # Buttons
-        Patient_Welcome_Button = Button(text="Patient", command=Patient)
+        Patient_Welcome_Button = Button(window,text="Patient", command=Patient,font=("Helvetica",14),background="#2E4053",foreground="white")
         Patient_Welcome_Button.pack()
-        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor)
+
+        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor,font=("Helvetica",14),background="#2E4053",foreground="white")
         Doctor_Welcome_Button.pack()
 
         window.mainloop()
