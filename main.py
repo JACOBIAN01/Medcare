@@ -55,6 +55,11 @@ class MainPage:
         window.config(background="lightblue")
         icon = PhotoImage(file="MedCare Logo.png")
         window.iconphoto(False, icon)       
+
+        #Header
+        Header = Label(window,text="Welcome to Medcare Portal",fg="#1a1a1a",bg="#f7f7f7",font=(("Helvetica",30,"bold")),borderwidth=2,relief="ridge")
+        Header.pack()
+
         #Image
         image = Image.open("Welcome_Image.jpg")
         photo = ImageTk.PhotoImage(image)
@@ -64,6 +69,8 @@ class MainPage:
         canvas.pack()
         canvas.create_image(0,0,anchor=NW,image=photo)
 
+        Header2 = Label(window,text="Please Choose who you are !",font=("Helvetica",14))
+        Header2.pack()
 
         #FUnctions
         def Doctor():
@@ -73,19 +80,32 @@ class MainPage:
             window.destroy()
             Patient_Welcome_Page()
 
-        #Label:
-        Header = Label(window,text="Welcome to Medcare Portal",font=("Helvetica",14))
-        Header.pack()
-        Header2 = Label(window,text="Please Choose who you are !",font=("Helvetica",14))
-        Header2.pack()
 
         # Buttons
-        Patient_Welcome_Button = Button(window,text="Patient", command=Patient,font=("Helvetica",14),background="#2E4053",foreground="white")
-        Patient_Welcome_Button.pack()
+        Patient_Welcome_Button = Button(window,text="Patient", command=Patient,font=("Helvetica", 14),
+            background="#00796b",  # Teal color
+            foreground="white",
+            padx=20,  # Horizontal padding
+            pady=10,  # Vertical padding
+            bd=3,  # No border
+            relief="raised",
+            overrelief="ridge",
+            cursor="hand2" )
+        
+        Patient_Welcome_Button.pack(side=LEFT,anchor="center")
 
-        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor,font=("Helvetica",14),background="#2E4053",foreground="white")
-        Doctor_Welcome_Button.pack()
+        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor,font=("Helvetica", 14),
+            background="#00796b",  # Teal color
+            foreground="white",
+            padx=20,  # Horizontal padding
+            pady=10,  # Vertical padding
+            bd=3,  # No border
+            relief="raised",
+            overrelief="ridge",
+            cursor="hand2" )
+        Doctor_Welcome_Button.pack(side=RIGHT,anchor="center")
 
         window.mainloop()
+
 #Object
 MainPage()
