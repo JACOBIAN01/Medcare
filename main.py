@@ -69,7 +69,7 @@ class MainPage:
         canvas.pack()
         canvas.create_image(0,0,anchor=NW,image=photo)
 
-        Header2 = Label(window,text="Please Choose who you are !",font=("Helvetica",14))
+        Header2 = Label(window,text="Please Choose who you are !",font=("Helvetica",14,"bold"))
         Header2.pack()
 
         #FUnctions
@@ -82,7 +82,7 @@ class MainPage:
 
 
         # Buttons
-        Patient_Welcome_Button = Button(window,text="Patient", command=Patient,font=("Helvetica", 14),
+        Patient_Welcome_Button = Button(window,text="Patient", command=Patient,font=("Helvetica", 15,"bold"),
             background="#00796b",  # Teal color
             foreground="white",
             padx=20,  # Horizontal padding
@@ -94,7 +94,7 @@ class MainPage:
         
         Patient_Welcome_Button.pack(side=LEFT,anchor="center")
 
-        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor,font=("Helvetica", 14),
+        Doctor_Welcome_Button = Button(text="Doctor", command=Doctor,font=("Helvetica", 15,"bold"),
             background="#00796b",  # Teal color
             foreground="white",
             padx=20,  # Horizontal padding
