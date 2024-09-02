@@ -2,6 +2,7 @@
 from tkinter import *
 from PIL import Image , ImageTk
 
+
 class Patient_Welcome_Page:
 
     def __init__(self):
@@ -10,39 +11,71 @@ class Patient_Welcome_Page:
         p_window.title("MedCare Plus Patient")
         p_window.geometry("1000x600")
         p_window.config(background='lightblue')
-        
-        def back():
-            p_window.destroy()
-            MainPage() 
-        
-        #Header
-        Header = Label(text="Patient Dashboard")
-        Header.pack()
 
-        #button
-        Back = Button(text="Back",command=back)
-        Back.pack()
+        Login_text = Label(p_window,text="LogIn to Medcare Plus",font=("Helvetica",30,"bold"))
+        Login_text.pack()
+
+        # Username Label and Entry
+        username_text = Label(p_window, text="Enter Username", font=("Helvetica", 15), bg='lightblue')
+        username_text.pack(pady=10)
+        username_entry = Entry(p_window, font=("Helvetica", 13), width=30)
+        username_entry.pack(pady=10)
+
+        # Password Label and Entry
+        password_text = Label(p_window, text="Enter Password", font=("Helvetica", 15), bg='lightblue')
+        password_text.pack(pady=10)
+        password_entry = Entry(p_window, show='*', font=("Helvetica", 13), width=30)
+        password_entry.pack(pady=10)
+
+        #Submit Button
+        import Patient_Dashboard
+        def Open_Patient_Dashboard():
+            p_window.destroy()
+            Patient_Dashboard.Patient_Dashboard()
+            
+        Submit = Button(text="LogIN",command=Open_Patient_Dashboard,font=("Helvetica", 15,"bold"), background="#00796b",  foreground="white", padx=20, pady=10, bd=3)
+        Submit.pack()
+
+
+
 
         p_window.mainloop()
 
 class Doctor_Welcome_Page:
     def __init__(self):
         # Window setup
-
         d_window = Tk()
-        d_window.title("MedCare Plus Doctor")
+        d_window.title("MedCare Plus - Doctor Portal")
         d_window.geometry("1000x600")
         d_window.config(background='lightblue')
-        def Back():
-            d_window.destroy()
-            MainPage()
-        #Header
-        Header = Label(text="Patient Dashboard")
-        Header.pack()
 
-        #Button
-        BackButton = Button(text="Back",command=Back)
-        BackButton.pack()
+        Login_text = Label(d_window,text="LogIn to Medcare Plus",font=("Helvetica",30,"bold"))
+        Login_text.pack()
+
+        # Username Label and Entry
+        username_text = Label(d_window, text="Enter Username", font=("Helvetica", 15), bg='lightblue')
+        username_text.pack(pady=10)
+        username_entry = Entry(d_window, font=("Helvetica", 13), width=30)
+        username_entry.pack(pady=10)
+
+        # Password Label and Entry
+        password_text = Label(d_window, text="Enter Password", font=("Helvetica", 15), bg='lightblue')
+        password_text.pack(pady=10)
+        password_entry = Entry(d_window, show='*', font=("Helvetica", 13), width=30)
+        password_entry.pack(pady=10)
+
+        #FUnction
+        import Doctor_Dashboard
+        def Open_Doctor_Dashboard():
+            d_window.destroy()
+            Doctor_Dashboard.Doctor_Dashboard()
+
+
+        #Submit Button
+        Submit = Button(text="LogIN",command=Open_Doctor_Dashboard,font=("Helvetica", 15,"bold"), background="#00796b",  foreground="white", padx=20, pady=10, bd=3)
+        Submit.pack()
+
+
 
         d_window.mainloop()
 
