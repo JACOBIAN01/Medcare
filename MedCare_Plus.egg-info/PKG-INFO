@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: MedCare-Plus
+Version: 0.1
+Summary: A Doctor-Patient Management System with Authentication and Dashboards
+Author: Subhadeep Ghorai
+Author-email: subhadeepghorai23@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: tkinter
+Requires-Dist: sqlite3
+
+# Medcare
+ Medcare Plus is a Python Tkinter GUI-based healthcare application that utilizes object-oriented programming (OOP) principles
+*I'm currently working on this.
