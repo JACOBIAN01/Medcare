@@ -22,7 +22,7 @@ class Patient_Welcome_Page:
         username_entry.pack(pady=10)
 
         # Password Label and Entry
-        password_text = Label(p_window, text="Enter Password", font=("Helvetica", 15), bg='lightblue')
+        password_text = Label(p_window, text="Please Enter Password", font=("Helvetica", 15), bg='lightblue')
         password_text.pack(pady=10)
         password_entry = Entry(p_window, show='*', font=("Helvetica", 13), width=30)
         password_entry.pack(pady=10)
