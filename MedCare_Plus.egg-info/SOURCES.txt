@@ -1,7 +1,0 @@
-README.md
-setup.py
-MedCare_Plus.egg-info/PKG-INFO
-MedCare_Plus.egg-info/SOURCES.txt
-MedCare_Plus.egg-info/dependency_links.txt
-MedCare_Plus.egg-info/requires.txt
-MedCare_Plus.egg-info/top_level.txt
