@@ -82,8 +82,7 @@ The **Doctor Dashboard** is tailored for healthcare providers to manage patient 
 9. **Profile Management**:  
    - Update doctor profile information, including specialization, available hours, and contact details.
 
-10. **Educational Resources**:  
-    - Access the latest research, case studies, and guidelines relevant to the medical practice.
+
 
 ## Installation
 
