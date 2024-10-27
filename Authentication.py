@@ -18,7 +18,6 @@ class Patient:
     def __init__(self):
         pass
 
-
     
     def PatientDashboard(self):
         self.window = Tk()
@@ -27,9 +26,6 @@ class Patient:
 
         self.welcome  = Label(self.window, text=f"Welcome Patient",bg="lightblue")
         self.welcome.pack()
-
-        
-
 
         self.window.mainloop()
          
@@ -46,7 +42,6 @@ class Doctor:
     def __init__(self):
         pass
 
-    
     def DoctorDashboard(self):
         self.window = Tk()
         self.window.geometry("300x300")
@@ -55,12 +50,8 @@ class Doctor:
         self.welcome  = Label(self.window, text=f"Welcome Doctor ! ",bg="lightblue")
         self.welcome.pack()
 
-        
-
-
         self.window.mainloop()
         
-
     
 class Admin:
     def __init__(self):
@@ -68,6 +59,8 @@ class Admin:
         self.window = Tk()
         self.window.geometry("300x300")
         self.window.config(bg="lightblue")
+        self.window.title("Medcare")
+        
 
         Header = Label(text="Welcome to Medcare",bg="lightblue",font=("Times",12,"bold"))
         Header.pack()
@@ -93,8 +86,6 @@ class Admin:
                 Patient.PatientDashboard(self)
             else:
                 welcome.config(text="Authentication Failed")
-
-
 
 
         label1 = Label(self.window,text="Enter User ID",bg="lightblue")
@@ -127,7 +118,11 @@ class Admin:
         return False
     
 
+
+
 admin = Admin()
+
+
 
 
 
