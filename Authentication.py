@@ -32,10 +32,7 @@ class Patient:
 
 
         self.window.mainloop()
-        
-
-
-        
+         
         
     def Valid(self,userid,password):
         for record in PatientDatabase:
@@ -71,6 +68,9 @@ class Admin:
         self.window = Tk()
         self.window.geometry("300x300")
         self.window.config(bg="lightblue")
+
+        Header = Label(text="Welcome to Medcare",bg="lightblue",font=("Times",12,"bold"))
+        Header.pack()
 
         
         roles = ["doctor","patient"]
