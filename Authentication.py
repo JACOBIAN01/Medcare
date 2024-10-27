@@ -14,6 +14,8 @@ DoctorDatabase = [
 ]
 
 
+
+
 class Patient:
     def __init__(self):
         pass
@@ -102,6 +104,7 @@ class Admin:
         welcome.pack()
 
         self.window.mainloop()
+
 
     def ValidDoctor(self,userid,password):
         for record in DoctorDatabase:
