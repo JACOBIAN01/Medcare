@@ -1,4 +1,5 @@
 from tkinter import *
+import datetime
 
 PatientDatabase = [
     {"admin":1234},
@@ -15,7 +16,6 @@ DoctorDatabase = [
 
 
 
-
 class Patient:
     def __init__(self):
         pass
@@ -25,9 +25,49 @@ class Patient:
         self.window = Tk()
         self.window.geometry("300x300")
         self.window.config(bg="lightblue")
+        self.window.title("Medcare")
 
-        self.welcome  = Label(self.window, text=f"Welcome Patient",bg="lightblue")
+        self.welcome  = Label(self.window, text=f"Welcome Patient",bg="lightblue",font=("Times",12,"bold"))
         self.welcome.pack()
+
+
+
+
+        def ConsultBooking():
+            Doctors = []
+            Time = []
+            for time in range(1,13):
+                Time.append(f"{time} PM")
+
+            for doctors in DoctorDatabase:
+                for doctor in doctors:
+                    Doctors.append(doctor)
+                    
+            selected_doctor = StringVar()
+            selected_doctor.set(Doctors[0])
+            selected_time = StringVar()
+            selected_time.set(Time[0])
+
+            ChooseDoctor = OptionMenu(self.window,selected_doctor,*Doctors)
+            ChooseDoctor.pack()
+
+
+            SelectTime = OptionMenu(self.window,selected_time,*Time)
+            SelectTime.pack()
+            
+            def Report():
+                Current_Doctor = selected_doctor.get()
+                Current_time = selected_time.get()
+                consult_report = f"Consultation Booked with Doctor {Current_Doctor} at {Current_time}"
+                report = Label(self.window, text=consult_report)
+                report.pack()
+
+            Book  = Button(self.window,text="Confirm",command= Report)
+            Book.pack()
+
+
+        Book_consult = Button(text="Book Consultation",bg="navyblue",fg="white",font=("Alice",9,"bold"),command=ConsultBooking)
+        Book_consult.pack()
 
         self.window.mainloop()
          
@@ -40,6 +80,11 @@ class Patient:
         return False
 
 
+class Consultation:
+    def __init__(self):
+        pass
+
+
 class Doctor:
     def __init__(self):
         pass
@@ -48,9 +93,12 @@ class Doctor:
         self.window = Tk()
         self.window.geometry("300x300")
         self.window.config(bg="lightblue")
+        self.window.title("Medcare")
 
         self.welcome  = Label(self.window, text=f"Welcome Doctor ! ",bg="lightblue")
         self.welcome.pack()
+
+        
 
         self.window.mainloop()
         
@@ -120,6 +168,7 @@ class Admin:
         
         return False
     
+
 
 
 
