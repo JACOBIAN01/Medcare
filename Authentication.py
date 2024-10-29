@@ -2,18 +2,92 @@ from tkinter import *
 import datetime
 
 PatientDatabase = [
-    {"admin":1234},
-    {"user1":2345},
-    {"user2":4567}
+    {
+        "Name": "Subhadeep Ghorai",
+        "patient_id": "admin",
+        "password":1234,
+        "age": 21,
+        "gender": "Male"
+    },
+    {
+        "Name": "Ravi Kumar",
+        "patient_id": "pat001",
+        "password":1294,
+        "age": 45,
+        "gender": "Male"
+    },
+    {
+        "Name": "Anjali Desai",
+        "patient_id": "pat002",
+        "password":1134,
+        "age": 30,
+        "gender": "Female"
+    },
+    {
+        "Name": "Manoj Choudhary",
+        "patient_id": "pat003",
+        "password":1254,
+        "age": 55,
+        "gender": "Male"
+    },
+    {
+        "Name": "Sita Reddy",
+        "patient_id": "pat004",
+        "password":1294,
+        "age": 60,
+        "gender": "Female"
+    },
+    {
+        "Name": "Rajesh Kapoor",
+        "patient_id": "pat005",
+        "password":1034,
+        "age": 50,
+        "gender": "Male"
+    }
 ]
+
+
+
 
 
 DoctorDatabase = [
-    {"admin":1234},
-    {"doc1":2345},
-    {"doc2":4567}
+        {
+        "Name": "Subhadeep Ghorai",
+        "userid": "admin",
+        "password": 1234,
+        "specialization": "SDE"
+    },
+    {
+        "Name": "Dr. Rohan Sharma",
+        "userid": "rohan_sharma",
+        "password": 1234,
+        "specialization": "Cardiology"
+    },
+    {
+        "Name": "Dr. Anjali Mehta",
+        "userid": "anjali_mehta",
+        "password": 5678,
+        "specialization": "Dermatology"
+    },
+    {
+        "Name": "Dr. Vikram Singh",
+        "userid": "vikram_singh",
+        "password": 9101,
+        "specialization": "Pediatrics"
+    },
+    {
+        "Name": "Dr. Priya Desai",
+        "userid": "priya_desai",
+        "password": 1121,
+        "specialization": "Neurology"
+    },
+    {
+        "Name": "Dr. Arjun Patel",
+        "userid": "arjun_patel",
+        "password": 3141,
+        "specialization": "Orthopedics"
+    }
 ]
-
 
 
 class Patient:
@@ -40,8 +114,7 @@ class Patient:
                 Time.append(f"{time} PM")
 
             for doctors in DoctorDatabase:
-                for doctor in doctors:
-                    Doctors.append(doctor)
+                    Doctors.append(doctors["Name"])
                     
             selected_doctor = StringVar()
             selected_doctor.set(Doctors[0])
@@ -127,7 +200,7 @@ class Admin:
             id = UserID.get()
             password = PassWord.get()
             if self.ValidDoctor(id,int(password)) and selected_role.get()=="doctor":
-                welcome.config(text="Welcome to MedCare !")
+                welcome.config(text=f"Welcome to MedCare {id}")
                 self.window.destroy()
                 Doctor.DoctorDashboard(self)
             elif self.ValidPatient(id,int(password)) and selected_role.get()=="patient":
@@ -155,20 +228,23 @@ class Admin:
 
 
     def ValidDoctor(self,userid,password):
-        for record in DoctorDatabase:
-            if userid in record and record[userid]==password:
+        for doctor in DoctorDatabase:
+            if (userid in doctor["userid"]  and doctor["password"]==password):
                 return True
-        
-        return False
+            else:
+                return False
+
     
     def ValidPatient(self,userid,password):
-        for record in PatientDatabase:
-            if userid in record and record[userid]==password:
+        for patient in PatientDatabase:
+            if (userid in patient["patient_id"]  and patient["password"]==password):
                 return True
-        
-        return False
-    
+            else:
+                return False
 
+    
+    
+        
 
 
 
