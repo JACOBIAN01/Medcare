@@ -89,7 +89,6 @@ DoctorDatabase = [
     }
 ]
 
-
 class Patient:
     def __init__(self):
         pass
@@ -103,9 +102,6 @@ class Patient:
 
         self.welcome  = Label(self.window, text=f"Welcome Patient",bg="lightblue",font=("Times",12,"bold"))
         self.welcome.pack()
-
-
-
 
         def ConsultBooking():
             Doctors = []
@@ -131,8 +127,10 @@ class Patient:
             def Report():
                 Current_Doctor = selected_doctor.get()
                 Current_time = selected_time.get()
-                consult_report = f"Consultation Booked with Doctor {Current_Doctor} at {Current_time}"
-                report = Label(self.window, text=consult_report)
+                with open("History.txt","a") as file:
+                    file.write(f"Consultation Booked. Doctor Name: {Current_Doctor} , Time: {Current_time}\n")
+        
+                report = Label(self.window, text="Consultation Confirmed!")
                 report.pack()
 
             Book  = Button(self.window,text="Confirm",command= Report)
@@ -183,6 +181,8 @@ class Admin:
         self.window.geometry("300x300")
         self.window.config(bg="lightblue")
         self.window.title("Medcare")
+
+        file = open("History.txt","w")
         
 
         Header = Label(text="Welcome to Medcare",bg="lightblue",font=("Times",12,"bold"))
