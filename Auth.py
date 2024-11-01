@@ -21,14 +21,13 @@ DoctorDatabase = [
 ]
 
 
-
-
 class Patient:
     def PatientDashboard(self):
         self.window = Tk()
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F") 
         self.window.title("MedCare - Patient Dashboard")
+        
 
         
         self.welcome = Label(self.window, text="Welcome, Patient", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
@@ -76,6 +75,8 @@ class Admin:
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Admin Panel")
+        global PatientName
+        global DoctorName
 
         
         with open("History.txt", "w") as file:
