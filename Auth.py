@@ -13,7 +13,8 @@ PatientDatabase = [
 ]
 
 DoctorDatabase = [
-    {"Name": "Subhadeep Ghorai", "user_id": "admin", "password": 1234, "age": 21, "gender": "Male"},
+    {"Name": "Subhadeep Ghorai", "user_id": "admin", "password": 1234,"specialization": "Cardiology"},
+    {"Name": "Laiba Razi Khan", "user_id": "laiba", "password": 9800,"specialization": "Cardiology"},
     {"Name": "Dr. Rohan Sharma", "userid": "rohan_sharma", "password": 1234, "specialization": "Cardiology"},
     {"Name": "Dr. Anjali Mehta", "userid": "anjali_mehta", "password": 5678, "specialization": "Dermatology"},
     {"Name": "Dr. Vikram Singh", "userid": "vikram_singh", "password": 9101, "specialization": "Pediatrics"},
