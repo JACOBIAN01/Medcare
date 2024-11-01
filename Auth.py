@@ -138,16 +138,14 @@ class Admin:
         for doctor in DoctorDatabase:
             if (userid in doctor["user_id"]  and doctor["password"]==password):
                 return True
-            else:
-                return False
+        return False
 
     
     def ValidPatient(self,userid,password):
         for patient in PatientDatabase:
             if (userid in patient["patient_id"]  and patient["password"]==password):
                 return True
-            else:
-                return False
+        return False
 
 
 

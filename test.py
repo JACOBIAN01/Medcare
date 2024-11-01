@@ -23,9 +23,7 @@ def ValidDoctor(id,password):
         for doctor in DoctorDatabase:
             if (id in doctor["user_id"]  and doctor["password"]==password):
                 print("Login")
-                break
-            else:
-                print("Error")
-                break
+        return False
+
 
 ValidDoctor(id,password)
