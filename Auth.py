@@ -13,6 +13,7 @@ PatientDatabase = [
 ]
 
 DoctorDatabase = [
+    {"Name": "Subhadeep Ghorai", "user_id": "admin", "password": 1234, "age": 21, "gender": "Male"},
     {"Name": "Dr. Rohan Sharma", "userid": "rohan_sharma", "password": 1234, "specialization": "Cardiology"},
     {"Name": "Dr. Anjali Mehta", "userid": "anjali_mehta", "password": 5678, "specialization": "Dermatology"},
     {"Name": "Dr. Vikram Singh", "userid": "vikram_singh", "password": 9101, "specialization": "Pediatrics"},
@@ -22,15 +23,16 @@ DoctorDatabase = [
 
 
 class Patient:
-    def PatientDashboard(self):
+    def PatientDashboard(self,id):
         self.window = Tk()
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F") 
         self.window.title("MedCare - Patient Dashboard")
-        
+        Name = Admin.GetPatientName(id)
+        Patient_ID = id
 
         
-        self.welcome = Label(self.window, text="Welcome, Patient", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
+        self.welcome = Label(self.window, text=f"Welcome {Name} ", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
 
         def ConsultBooking():
@@ -59,30 +61,30 @@ class Patient:
         self.window.mainloop()
 
 class Doctor:
-    def DoctorDashboard(self):
+    def DoctorDashboard(self,id):
         self.window = Tk()
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F")  
         self.window.title("MedCare - Doctor Dashboard")
+        Name = Admin.GetDoctorName(id)
+        Doctor_id = id
 
         
-        Label(self.window, text="Welcome, Doctor!", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
+        Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
         self.window.mainloop()
 
 class Admin:
+    
     def __init__(self):
         self.window = Tk()
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Admin Panel")
-        global PatientName
-        global DoctorName
 
-        
+    
         with open("History.txt", "w") as file:
             pass
-
-        
+   
         Label(self.window, text="Welcome to MedCare", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 
         roles = ["Doctor", "Patient"]
@@ -95,6 +97,8 @@ class Admin:
         UserID = Entry(self.window, font=("Helvetica", 10))
         UserID.pack()
 
+
+
         Label(self.window, text="Enter Password", bg="#2F4F4F", fg="white", font=("Helvetica", 10)).pack(pady=5)
         PassWord = Entry(self.window, show="*", font=("Helvetica", 10))
         PassWord.pack()
@@ -104,20 +108,34 @@ class Admin:
             password = int(PassWord.get())
             if self.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                 self.window.destroy()
-                Doctor().DoctorDashboard()
+                Doctor().DoctorDashboard(user_id)
             elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                 self.window.destroy()
-                Patient().PatientDashboard()
+                Patient().PatientDashboard(user_id)
             else:
                 Label(self.window, text="Authentication Failed", fg="red", bg="#2F4F4F", font=("Helvetica", 10, "bold")).pack()
+            
 
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
         self.window.mainloop()
 
+    
+    def GetDoctorName(id):
+                for doctor in DoctorDatabase:
+                    if doctor["user_id"] == id:
+                        return doctor["Name"]
+                return "Unknown"
+    def GetPatientName(id):
+            for Patient in PatientDatabase:
+                if Patient["patient_id"]==id:
+                    return Patient["Name"]
+            return "Unknown"
+    
+
     def ValidDoctor(self,userid,password):
         for doctor in DoctorDatabase:
-            if (userid in doctor["userid"]  and doctor["password"]==password):
+            if (userid in doctor["user_id"]  and doctor["password"]==password):
                 return True
             else:
                 return False
