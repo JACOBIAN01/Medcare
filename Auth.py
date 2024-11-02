@@ -59,7 +59,9 @@ class Patient:
             Button(self.window, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=15)
 
         Button(self.window, text="Book Consultation", command=ConsultBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold")).pack(pady=10)
+
         self.window.mainloop()
+
 
 class Doctor:
     def DoctorDashboard(self,id):
@@ -70,13 +72,23 @@ class Doctor:
         Name = Admin.GetDoctorName(id)
         Doctor_id = id
 
+        def LogOut():
+            self.window.destroy()
+            new_admin = Admin()
+            new_admin.AdminDashboard()
+
+            
+
         
         Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
+        Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+
         self.window.mainloop()
+
 
 class Admin:
     
-    def __init__(self):
+    def AdminDashboard(self):
         self.window = Tk()
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F")
@@ -116,8 +128,8 @@ class Admin:
             else:
                 Label(self.window, text="Authentication Failed", fg="red", bg="#2F4F4F", font=("Helvetica", 10, "bold")).pack()
             
-
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+
 
         self.window.mainloop()
 
@@ -138,6 +150,7 @@ class Admin:
         for doctor in DoctorDatabase:
             if (userid in doctor["user_id"]  and doctor["password"]==password):
                 return True
+        messagebox.ERROR("Authentication Error","Please Try again!")
         return False
 
     
@@ -151,3 +164,4 @@ class Admin:
 
 # Initialize Admin Panel
 admin = Admin()
+admin.AdminDashboard()
