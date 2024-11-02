@@ -15,11 +15,11 @@ PatientDatabase = [
 DoctorDatabase = [
     {"Name": "Subhadeep Ghorai", "user_id": "admin", "password": 1234,"specialization": "Cardiology"},
     {"Name": "Laiba Razi Khan", "user_id": "laiba", "password": 9800,"specialization": "Cardiology"},
-    {"Name": "Dr. Rohan Sharma", "userid": "rohan_sharma", "password": 1234, "specialization": "Cardiology"},
-    {"Name": "Dr. Anjali Mehta", "userid": "anjali_mehta", "password": 5678, "specialization": "Dermatology"},
-    {"Name": "Dr. Vikram Singh", "userid": "vikram_singh", "password": 9101, "specialization": "Pediatrics"},
-    {"Name": "Dr. Priya Desai", "userid": "priya_desai", "password": 1121, "specialization": "Neurology"},
-    {"Name": "Dr. Arjun Patel", "userid": "arjun_patel", "password": 3141, "specialization": "Orthopedics"}
+    {"Name": "Dr. Rohan Sharma", "user_id": "rohan_sharma", "password": 1234, "specialization": "Cardiology"},
+    {"Name": "Dr. Anjali Mehta", "user_id": "anjali_mehta", "password": 5678, "specialization": "Dermatology"},
+    {"Name": "Dr. Vikram Singh", "user_id": "vikram_singh", "password": 9101, "specialization": "Pediatrics"},
+    {"Name": "Dr. Priya Desai", "user_id": "priya_desai", "password": 1121, "specialization": "Neurology"},
+    {"Name": "Dr. Arjun Patel", "user_id": "arjun_patel", "password": 3141, "specialization": "Orthopedics"}
 ]
 
 
@@ -35,6 +35,11 @@ class Patient:
         
         self.welcome = Label(self.window, text=f"Welcome {Name} ", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
+
+        def LogOut():
+            self.window.destroy()
+            new_admin = Admin()
+            new_admin.AdminDashboard()
 
         def ConsultBooking():
             Doctors = [doc["Name"] for doc in DoctorDatabase]
@@ -59,6 +64,8 @@ class Patient:
             Button(self.window, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=15)
 
         Button(self.window, text="Book Consultation", command=ConsultBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold")).pack(pady=10)
+        Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+
 
         self.window.mainloop()
 
@@ -117,15 +124,16 @@ class Admin:
         PassWord.pack()
 
         def auth():
-            user_id = UserID.get()
-            password = int(PassWord.get())
-            if self.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
-                self.window.destroy()
-                Doctor().DoctorDashboard(user_id)
-            elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
-                self.window.destroy()
-                Patient().PatientDashboard(user_id)
-            else:
+            try:
+                user_id = UserID.get()
+                password = int(PassWord.get())
+                if self.ValidDoctor(user_id,password) and selected_role.get().lower() == "doctor":
+                    self.window.destroy()
+                    Doctor().DoctorDashboard(user_id)
+                elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
+                    self.window.destroy()
+                    Patient().PatientDashboard(user_id)
+            except:
                 Label(self.window, text="Authentication Failed", fg="red", bg="#2F4F4F", font=("Helvetica", 10, "bold")).pack()
             
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
@@ -150,7 +158,6 @@ class Admin:
         for doctor in DoctorDatabase:
             if (userid in doctor["user_id"]  and doctor["password"]==password):
                 return True
-        messagebox.ERROR("Authentication Error","Please Try again!")
         return False
 
     
