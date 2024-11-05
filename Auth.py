@@ -100,10 +100,6 @@ class Admin:
         self.window.geometry("400x400")
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Admin Panel")
-
-    
-        with open("History.txt", "w") as file:
-            pass
    
         Label(self.window, text="Welcome to MedCare", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 
