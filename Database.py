@@ -6,3 +6,4 @@ patient_cursor = patient_record.cursor()
 
 doctor_record = sqlite3.connect("doctor_records.db")
 doctor_cursor = doctor_record.cursor()
+
