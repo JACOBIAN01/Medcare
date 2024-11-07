@@ -3,6 +3,7 @@ import datetime
 from tkinter import messagebox
 
 
+
 PatientDatabase = [
     {"Name": "Subhadeep Ghorai", "patient_id": "admin", "password": 1234, "age": 21, "gender": "Male"},
     {"Name": "Ravi Kumar", "patient_id": "pat001", "password": 1294, "age": 45, "gender": "Male"},
@@ -11,6 +12,7 @@ PatientDatabase = [
     {"Name": "Sita Reddy", "patient_id": "pat004", "password": 1294, "age": 60, "gender": "Female"},
     {"Name": "Rajesh Kapoor", "patient_id": "pat005", "password": 1034, "age": 50, "gender": "Male"}
 ]
+
 
 DoctorDatabase = [
     {"Name": "Subhadeep Ghorai", "user_id": "admin", "password": 1234,"specialization": "Cardiology"},
@@ -23,6 +25,7 @@ DoctorDatabase = [
 ]
 
 
+
 class Patient:
     def PatientDashboard(self,id):
         self.window = Tk()
@@ -31,8 +34,10 @@ class Patient:
         self.window.title("MedCare - Patient Dashboard")
         Name = Admin.GetPatientName(id)
         Patient_ID = id
+        
 
         
+
         self.welcome = Label(self.window, text=f"Welcome {Name} ", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
 
@@ -58,7 +63,7 @@ class Patient:
 
             def Report():
                 with open("History.txt", "a") as file:
-                    file.write(f"Consultation Booked. Doctor: {selected_doctor.get()}, Time: {selected_time.get()}\n")
+                    file.write(f"Consultation Booked. Doctor: {selected_doctor.get()}| Patient Name: {Name} | Time: {selected_time.get()} | Booking Date {datetime.datetime.now().date()}")
                 messagebox.showinfo("Confirmation","Consultation Booked Successfully!")
 
             Button(self.window, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=15)
@@ -66,8 +71,8 @@ class Patient:
         Button(self.window, text="Book Consultation", command=ConsultBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold")).pack(pady=10)
         Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
-
         self.window.mainloop()
+
 
 
 class Doctor:
@@ -91,6 +96,7 @@ class Doctor:
         Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
         self.window.mainloop()
+
 
 
 class Admin:
@@ -162,6 +168,8 @@ class Admin:
             if (userid in patient["patient_id"]  and patient["password"]==password):
                 return True
         return False
+
+
 
 
 
