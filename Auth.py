@@ -1,6 +1,8 @@
 from tkinter import *
 import datetime
 from tkinter import messagebox
+import NewAccount
+import DoctorDashboard
 
 PatientDatabase = [
     {"Name": "Subhadeep Ghorai", "patient_id": "admin", "password": 1234, "age": 21, "gender": "Male"},
@@ -66,23 +68,7 @@ class Patient:
 
         self.window.mainloop()
 
-class Doctor:
-    def DoctorDashboard(self, id):
-        self.window = Tk()
-        self.window.geometry("1280x720")
-        self.window.config(bg="#2F4F4F")
-        self.window.title("MedCare - Doctor Dashboard")
-        Name = Admin.GetDoctorName(id)
 
-        Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
-
-        def LogOut():
-            self.window.destroy()
-            new_admin = Admin()
-            new_admin.AdminDashboard()
-
-        Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
-        self.window.mainloop()
 
 class Admin:
     def AdminDashboard(self):
@@ -113,7 +99,7 @@ class Admin:
                 password = int(PassWord.get())
                 if self.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     self.window.destroy()
-                    Doctor().DoctorDashboard(user_id)
+                    DoctorDashboard.Doctor.Dashboard(self,user_id)
                 elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
                     Patient().PatientDashboard(user_id)
@@ -124,7 +110,7 @@ class Admin:
         
         def CreateAccount():
             self.window.destroy()
-            NewAccount.Account(self)
+            NewAccount.NewUser.Account(self)
 
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         Label(self.window, text="Don't Have any Account ? Create One", bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
@@ -159,16 +145,6 @@ class Admin:
         return False
 
 
-
-
-class NewAccount:
-    def Account(self):
-        self.window = Tk()
-        self.window.geometry("1280x720")
-        self.window.config(bg="#2F4F4F")
-        self.window.title("New Account")
-
-        self.window.mainloop()
 
 
 
