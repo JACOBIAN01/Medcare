@@ -121,9 +121,17 @@ class Admin:
                     messagebox.showerror("Error", "Authentication Failed")
             except ValueError:
                 messagebox.showerror("Error", "Invalid Password Format")
+        
+        def CreateAccount():
+            self.window.destroy()
+            NewAccount.Account(self)
 
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+        Label(self.window, text="Don't Have any Account ? Create One", bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+        Button(self.window, text="Sign Up", command=CreateAccount, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         self.window.mainloop()
+
+
 
  
     def GetDoctorName(id):
@@ -149,6 +157,25 @@ class Admin:
             if userid == patient["patient_id"] and patient["password"] == password:
                 return True
         return False
+
+
+
+
+class NewAccount:
+    def Account(self):
+        self.window = Tk()
+        self.window.geometry("1280x720")
+        self.window.config(bg="#2F4F4F")
+        self.window.title("New Account")
+
+        self.window.mainloop()
+
+
+
+
+
+
+
 
 # Initialize Admin Panel
 admin = Admin()
