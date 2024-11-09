@@ -84,14 +84,5 @@ class Admin:
         return False
 
 
-
-
-
-
-
-
-
-
-# Initialize Admin Panel
 admin = Admin()
 admin.AdminDashboard()
