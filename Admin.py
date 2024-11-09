@@ -1,16 +1,16 @@
 from tkinter import *
 import datetime
 from tkinter import messagebox
-import NewAccount
-import DoctorDashboard
 import PatientDashboard
 import TestDataBase
+import DoctorDashboard
+
 
 
 
 
 class Admin:
-    def AdminDashboard(self):
+    def __init__(self):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F")
@@ -36,10 +36,10 @@ class Admin:
             user_id = UserID.get()
             try:
                 password = int(PassWord.get())
-                if self.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
+                if TestDataBase.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     self.window.destroy()
                     DoctorDashboard.doctor(self,user_id)
-                elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
+                elif TestDataBase.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
                     PatientDashboard.Patient(self,user_id)
                 else:
@@ -48,8 +48,7 @@ class Admin:
                 messagebox.showerror("Error", "Invalid Password Format")
         
         def CreateAccount():
-            self.window.destroy()
-            NewAccount.NewUser.Account(self)
+            pass
 
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         Label(self.window, text="Don't Have any Account ? Create One", bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
@@ -60,4 +59,4 @@ class Admin:
 
 
 admin = Admin()
-admin.AdminDashboard()
+

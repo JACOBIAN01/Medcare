@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import datetime
-import Admin
 import TestDataBase
 class Patient:
     def __init__(self, id):
@@ -9,15 +8,13 @@ class Patient:
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F") 
         self.window.title("MedCare - Patient Dashboard")
-        Name = Admin.Admin.GetPatientName(id)
+        Name = TestDataBase.GetPatientName(id)
 
         self.welcome = Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
 
         def LogOut():
-            self.window.destroy()
-            new_admin = Admin()
-            new_admin.AdminDashboard()
+            pass
 
         def ConsultBooking():
             Doctors = [doc["Name"] for doc in TestDataBase.DoctorDatabase]
