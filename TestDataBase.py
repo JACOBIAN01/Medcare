@@ -16,3 +16,27 @@ DoctorDatabase = [
     {"Name": "Dr. Priya Desai", "user_id": "priya_desai", "password": 1121, "specialization": "Neurology"},
     {"Name": "Dr. Arjun Patel", "user_id": "arjun_patel", "password": 3141, "specialization": "Orthopedics"}
 ]
+
+def GetDoctorName(id):
+        for doctor in DoctorDatabase:
+            if doctor["user_id"] == id:
+                return doctor["Name"]
+        return "Unknown"
+
+def GetPatientName(id):
+        for patient in PatientDatabase:
+            if patient["patient_id"] == id:
+                return patient["Name"]
+        return "Unknown"
+
+def ValidDoctor(self, userid, password):
+        for doctor in DoctorDatabase:
+            if userid == doctor["user_id"] and doctor["password"] == password:
+                return True
+        return False
+
+def ValidPatient(self, userid, password):
+        for patient in PatientDatabase:
+            if userid == patient["patient_id"] and patient["password"] == password:
+                return True
+        return False

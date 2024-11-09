@@ -41,7 +41,7 @@ class Admin:
                     DoctorDashboard.doctor(self,user_id)
                 elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
-                    patient = PatientDashboard.Patient(self,user_id)
+                    PatientDashboard.Patient(self,user_id)
                 else:
                     messagebox.showerror("Error", "Authentication Failed")
             except ValueError:
@@ -57,31 +57,6 @@ class Admin:
         self.window.mainloop()
 
 
-
- 
-    def GetDoctorName(id):
-        for doctor in TestDataBase.DoctorDatabase:
-            if doctor["user_id"] == id:
-                return doctor["Name"]
-        return "Unknown"
-
-    def GetPatientName(id):
-        for patient in TestDataBase.PatientDatabase:
-            if patient["patient_id"] == id:
-                return patient["Name"]
-        return "Unknown"
-
-    def ValidDoctor(self, userid, password):
-        for doctor in TestDataBase.DoctorDatabase:
-            if userid == doctor["user_id"] and doctor["password"] == password:
-                return True
-        return False
-
-    def ValidPatient(self, userid, password):
-        for patient in TestDataBase.PatientDatabase:
-            if userid == patient["patient_id"] and patient["password"] == password:
-                return True
-        return False
 
 
 admin = Admin()

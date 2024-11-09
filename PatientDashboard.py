@@ -49,3 +49,4 @@ class Patient:
         self.window.mainloop()
 
 
+patient = Patient(id)
