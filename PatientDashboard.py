@@ -3,7 +3,7 @@ from tkinter import messagebox
 import datetime
 
 class Patient:
-    def PatientDashboard(self, id):
+    def __init__(self, id):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F") 

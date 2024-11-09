@@ -19,4 +19,4 @@ class Doctor:
         Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         self.window.mainloop()
 
-doctor = Doctor()
+
