@@ -1,14 +1,15 @@
 from tkinter import *
 from tkinter import messagebox
 import datetime
-
+import Admin
+import TestDataBase
 class Patient:
     def __init__(self, id):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F") 
         self.window.title("MedCare - Patient Dashboard")
-        Name = Admin.GetPatientName(id)
+        Name = Admin.Admin.GetPatientName(id)
 
         self.welcome = Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
@@ -19,7 +20,7 @@ class Patient:
             new_admin.AdminDashboard()
 
         def ConsultBooking():
-            Doctors = [doc["Name"] for doc in DoctorDatabase]
+            Doctors = [doc["Name"] for doc in TestDataBase.DoctorDatabase]
             Times = [f"{time} PM" for time in range(1, 13)]
 
             selected_doctor = StringVar(value=Doctors[0])

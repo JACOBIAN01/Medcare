@@ -20,3 +20,4 @@ class Doctor:
         self.window.mainloop()
 
 
+doctor   = Doctor(id)

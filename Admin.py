@@ -38,7 +38,7 @@ class Admin:
                 password = int(PassWord.get())
                 if self.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     self.window.destroy()
-                    doctor = DoctorDashboard.Doctor(self,user_id)
+                    DoctorDashboard.doctor(self,user_id)
                 elif self.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
                     patient = PatientDashboard.Patient(self,user_id)
