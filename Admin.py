@@ -1,16 +1,11 @@
 from tkinter import *
 import datetime
 from tkinter import messagebox
-import PatientDashboard
-import TestDataBase
-import DoctorDashboard
-
-
 
 
 
 class Admin:
-    def __init__(self):
+    def AdminDashboard(self):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F")
@@ -35,6 +30,9 @@ class Admin:
         def auth():
             user_id = UserID.get()
             try:
+                import TestDataBase
+                import DoctorDashboard
+                import PatientDashboard
                 password = int(PassWord.get())
                 if TestDataBase.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     self.window.destroy()
@@ -54,9 +52,4 @@ class Admin:
         Label(self.window, text="Don't Have any Account ? Create One", bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         Button(self.window, text="Sign Up", command=CreateAccount, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         self.window.mainloop()
-
-
-
-
-admin = Admin()
 
