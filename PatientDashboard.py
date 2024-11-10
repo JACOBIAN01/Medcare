@@ -3,7 +3,7 @@ from tkinter import messagebox
 import datetime
 import TestDataBase
 class Patient:
-    def __init__(self, id):
+    def PatientDashboard(self, id):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F") 
@@ -14,7 +14,10 @@ class Patient:
         self.welcome.pack(pady=20)
 
         def LogOut():
-            pass
+            self.window.destroy()
+            import Welcome
+            welcome = Welcome()
+            
 
         def ConsultBooking():
             Doctors = [doc["Name"] for doc in TestDataBase.DoctorDatabase]
@@ -45,5 +48,3 @@ class Patient:
 
         self.window.mainloop()
 
-
-patient = Patient(id)

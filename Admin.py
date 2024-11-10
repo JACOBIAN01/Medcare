@@ -2,8 +2,6 @@ from tkinter import *
 import datetime
 from tkinter import messagebox
 
-
-
 class Admin:
     def AdminDashboard(self):
         self.window = Tk()
@@ -31,15 +29,15 @@ class Admin:
             user_id = UserID.get()
             try:
                 import TestDataBase
-                import DoctorDashboard
-                import PatientDashboard
                 password = int(PassWord.get())
                 if TestDataBase.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
+                    import DoctorDashboard
                     self.window.destroy()
-                    DoctorDashboard.doctor(self,user_id)
+                    DoctorDashboard.Doctor.DoctorDashboard(self,user_id)
                 elif TestDataBase.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
-                    PatientDashboard.Patient(self,user_id)
+                    import PatientDashboard
+                    PatientDashboard.patient.PatientDashboard(self,user_id)
                 else:
                     messagebox.showerror("Error", "Authentication Failed")
             except ValueError:

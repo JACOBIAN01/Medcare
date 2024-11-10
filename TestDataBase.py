@@ -29,13 +29,13 @@ def GetPatientName(id):
                 return patient["Name"]
         return "Unknown"
 
-def ValidDoctor(self, userid, password):
+def ValidDoctor(userid, password):
         for doctor in DoctorDatabase:
             if userid == doctor["user_id"] and doctor["password"] == password:
                 return True
         return False
 
-def ValidPatient(self, userid, password):
+def ValidPatient(userid, password):
         for patient in PatientDatabase:
             if userid == patient["patient_id"] and patient["password"] == password:
                 return True
