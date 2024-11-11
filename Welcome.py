@@ -7,6 +7,7 @@ class Welcome:
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Admin Panel")
+        self.window.iconbitmap("./Static/MedCareLogo.ico")
    
         Label(self.window, text="Welcome to MedCare", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
         def welcome():
