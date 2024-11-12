@@ -54,36 +54,25 @@ insert_doctor = "INSERT INTO doctors (name,age,doc_id,password,specialization) V
 
 
 def GetDoctorName(id):
-   doctor_cursor.execute("SELECT * FROM doctors")
-   rows = doctor_cursor.fetchall()
-   for row in rows:
-        if(row[2] == id):
-              return(row[0])
-   return "unknown"
-
+   doctor_cursor.execute("SELECT name FROM doctors WHERE doc_id = ?",(id,))
+   Name = doctor_cursor.fetchone()
+   return Name[0] if Name else "Unknown"
+   
 def GetPatientName(id):
-     patient_cursor.execute("SELECT * FROM doctors")
-     rows = patient_cursor.fetchall()
-     for row in rows:
-        if(row[2] == id):
-              return(row[0])
-     return "unknown"
-
+     patient_cursor.execute("SELECT name FROM patients WHERE pat_id = ?",(id,))
+     Name = patient_cursor.fetchone()
+     return Name[0] if Name else "Unknown"
 
 
 def ValidDoctor(userid, password):
-        doctor_cursor.execute("SELECT * FROM doctors")
-        rows = doctor_cursor.fetchall()
-        for row in rows:
-            if(row[2] in id):
-              return(True)
-        return False
+        doctor_cursor.execute("SELECT * FROM doctors WHERE doc_id =? AND password = ?",(userid,password))
+        return bool(doctor_cursor.fetchone())
+
 
 def ValidPatient(userid, password):
-     patient_cursor.execute("SELECT * FROM doctors")
-     rows = patient_cursor.fetchall()
-     for row in rows:
-        if(row[2] in id):
-              return True
-     return False
+     patient_cursor.execute("SELECT * FROM patients WHERE pat_id = ? AND password = ?",(userid,password))
+     return bool(patient_cursor.fetchone())
+
+
+
 

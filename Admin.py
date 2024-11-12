@@ -30,10 +30,10 @@ class Admin:
         PassWord.pack()
 
         def auth():
+            import Database
+            password = int(PassWord.get())
             user_id = UserID.get()
             try:
-                import Database
-                password = int(PassWord.get())
                 if Database.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     import DoctorDashboard
                     self.window.destroy()
