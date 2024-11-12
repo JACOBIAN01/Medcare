@@ -58,15 +58,21 @@ def ValidPatient(userid, password):
      return bool(patient_cursor.fetchone())
 
 def GetAllDoctors():
-     doctor_cursor.execute("SELECT * FROM doctors")
-     Doctors = list(doctor_cursor.fetchall())
-     return Doctors
+     doctor_cursor.execute("SELECT name FROM doctors")
+     Doctors = doctor_cursor.fetchall()
+     Doctor_Name_list = []
+     for doctor in Doctors:
+          Doctor_Name_list.append(doctor[0])
+     return Doctor_Name_list
 
 def GetAllPatients():
-     patient_cursor.execute("SELECT * FROM patients")
-     Patient = list(patient_cursor.fetchall())
-     return Patient
+     patient_cursor.execute("SELECT name FROM patients")
+     Patient = patient_cursor.fetchall()
+     Patient_Name_list =[]
+     for patient in Patient:
+          Patient_Name_list.append(patient[0])
 
+     return Patient_Name_list
 
 def ClearDatabase():
      patient_cursor.execute("DELETE FROM patients")
@@ -88,6 +94,7 @@ def AddPatient(name,age,gender,id,password,):
      patient_cursor.execute(insert_patient,(name,age,gender,id,password))
      patient_database.commit()
      patient_database.close()
+
 
 
 
