@@ -62,21 +62,32 @@ def GetAllDoctors():
      Doctors = list(doctor_cursor.fetchall())
      return Doctors
 
+def GetAllPatients():
+     patient_cursor.execute("SELECT * FROM patients")
+     Patient = list(patient_cursor.fetchall())
+     return Patient
+
+
+def ClearDatabase():
+     patient_cursor.execute("DELETE FROM patients")
+     doctor_cursor.execute("DELETE FROM doctors")
+
+     patient_database.commit()
+     doctor_database.commit()
+
+     patient_database.close()
+     doctor_database.close()
+
+
+def AddDoctor(name,age,id,password,field):
+     doctor_cursor.execute(insert_doctor,(name,age,id,password,field))
+     doctor_database.commit()
+     doctor_database.close()
+
+def AddPatient(name,age,gender,id,password,):
+     patient_cursor.execute(insert_patient,(name,age,gender,id,password))
+     patient_database.commit()
+     patient_database.close()
 
 
 
-patient_cursor.execute(insert_patient,("Subhadeep Ghorai", 21, "Male", "admin", 1234))
-patient_cursor.execute(insert_patient,("Laiba Razi", 21, "Female", "pat_01",2345))
-patient_cursor.execute(insert_patient,("Avi", 21, "Male", "pat_02", 5764))
-
-
-doctor_cursor.execute(insert_doctor,("Subhadeep Ghorai", 45, "admin", 1234, "Cardiology"))
-doctor_cursor.execute(insert_doctor,("Supriti Nayek", 45, "doc_01", 9800, "Cardiology"))
-doctor_cursor.execute(insert_doctor,("Rahul Dutta", 45, "doc_02", 3654, "Cardiology"))
-
-
-patient_database.commit()
-doctor_database.commit()
-
-patient_database.close()
-doctor_database.close()
