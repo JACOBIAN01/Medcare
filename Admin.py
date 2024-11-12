@@ -4,6 +4,7 @@ from tkinter import messagebox
 
 
 
+
 class Admin:
     def AdminDashboard(self):
         self.window = Tk()
@@ -31,13 +32,13 @@ class Admin:
         def auth():
             user_id = UserID.get()
             try:
-                import TestDataBase
+                import Database
                 password = int(PassWord.get())
-                if TestDataBase.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
+                if Database.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":
                     import DoctorDashboard
                     self.window.destroy()
                     DoctorDashboard.Doctor.DoctorDashboard(self,user_id)
-                elif TestDataBase.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
+                elif Database.ValidPatient(user_id, password) and selected_role.get().lower() == "patient":
                     self.window.destroy()
                     import PatientDashboard
                     PatientDashboard.Patient.PatientDashboard(self,user_id)

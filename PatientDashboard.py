@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import datetime
-import TestDataBase
+import Database
 class Patient:
     def PatientDashboard(self, id):
         self.window = Tk()
@@ -9,7 +9,7 @@ class Patient:
         self.window.config(bg="#2F4F4F") 
         self.window.title("MedCare - Patient Dashboard")
         self.window.iconbitmap("./Static/MedCareLogo.ico")
-        Name = TestDataBase.GetPatientName(id)
+        Name = Database.GetPatientName(id)
 
         self.welcome = Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold"))
         self.welcome.pack(pady=20)
@@ -22,7 +22,7 @@ class Patient:
             
 
         def ConsultBooking():
-            Doctors = [doc["Name"] for doc in TestDataBase.DoctorDatabase]
+            Doctors = [doc["Name"] for doc in  Database.DoctorDatabase]
             Times = [f"{time} PM" for time in range(1, 13)]
 
             selected_doctor = StringVar(value=Doctors[0])

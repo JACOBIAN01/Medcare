@@ -1,5 +1,5 @@
 from tkinter import *
-import TestDataBase
+import Database
 
 
 class Doctor:
@@ -9,7 +9,7 @@ class Doctor:
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Doctor Dashboard")
         self.window.iconbitmap("./Static/MedCareLogo.ico")
-        Name = TestDataBase.GetDoctorName(id)
+        Name = Database.GetDoctorName(id)
 
         Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 
