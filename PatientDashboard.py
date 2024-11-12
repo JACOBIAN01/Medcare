@@ -22,7 +22,7 @@ class Patient:
             
 
         def ConsultBooking():
-            Doctors = [doc["Name"] for doc in  Database.DoctorDatabase]
+            Doctors = Database.GetAllDoctors()
             Times = [f"{time} PM" for time in range(1, 13)]
 
             selected_doctor = StringVar(value=Doctors[0])

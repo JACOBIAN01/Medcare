@@ -36,22 +36,6 @@ insert_patient = "INSERT INTO patients (name,age,gender,pat_id,password) VALUES 
 insert_doctor = "INSERT INTO doctors (name,age,doc_id,password,specialization) VALUES (?,?,?,?,?)"
 
 
-# patient_cursor.execute(insert_patient,("Subhadeep Ghorai", 21, "Male", "patadmin", 1234))
-# patient_cursor.execute(insert_patient,("Laiba Razi", 21, "Female", "pat_01",2345))
-# patient_cursor.execute(insert_patient,("Avi", 21, "Male", "pat_02", 5764))
-
-
-# doctor_cursor.execute(insert_doctor,("Subhadeep Ghorai", 45, "docadmin", 1234, "Cardiology"))
-# doctor_cursor.execute(insert_doctor,("Supriti Nayek", 45, "doc_01", 9800, "Cardiology"))
-# doctor_cursor.execute(insert_doctor,("Rahul Dutta", 45, "doc_02", 3654, "Cardiology"))
-
-
-# patient_database.commit()
-# doctor_database.commit()
-
-# patient_database.close()
-# doctor_database.close()
-
 
 def GetDoctorName(id):
    doctor_cursor.execute("SELECT name FROM doctors WHERE doc_id = ?",(id,))
@@ -73,6 +57,26 @@ def ValidPatient(userid, password):
      patient_cursor.execute("SELECT * FROM patients WHERE pat_id = ? AND password = ?",(userid,password))
      return bool(patient_cursor.fetchone())
 
+def GetAllDoctors():
+     doctor_cursor.execute("SELECT * FROM doctors")
+     Doctors = list(doctor_cursor.fetchall())
+     return Doctors
 
 
 
+
+patient_cursor.execute(insert_patient,("Subhadeep Ghorai", 21, "Male", "admin", 1234))
+patient_cursor.execute(insert_patient,("Laiba Razi", 21, "Female", "pat_01",2345))
+patient_cursor.execute(insert_patient,("Avi", 21, "Male", "pat_02", 5764))
+
+
+doctor_cursor.execute(insert_doctor,("Subhadeep Ghorai", 45, "admin", 1234, "Cardiology"))
+doctor_cursor.execute(insert_doctor,("Supriti Nayek", 45, "doc_01", 9800, "Cardiology"))
+doctor_cursor.execute(insert_doctor,("Rahul Dutta", 45, "doc_02", 3654, "Cardiology"))
+
+
+patient_database.commit()
+doctor_database.commit()
+
+patient_database.close()
+doctor_database.close()
