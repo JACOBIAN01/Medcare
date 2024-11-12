@@ -54,24 +54,36 @@ insert_doctor = "INSERT INTO doctors (name,age,doc_id,password,specialization) V
 
 
 def GetDoctorName(id):
-    pass
+   doctor_cursor.execute("SELECT * FROM doctors")
+   rows = doctor_cursor.fetchall()
+   for row in rows:
+        if(row[2] == id):
+              return(row[0])
+   return "unknown"
 
 def GetPatientName(id):
-        pass
+     patient_cursor.execute("SELECT * FROM doctors")
+     rows = patient_cursor.fetchall()
+     for row in rows:
+        if(row[2] == id):
+              return(row[0])
+     return "unknown"
+
+
+
 def ValidDoctor(userid, password):
-        pass
+        doctor_cursor.execute("SELECT * FROM doctors")
+        rows = doctor_cursor.fetchall()
+        for row in rows:
+            if(row[2] in id):
+              return(True)
+        return False
+
 def ValidPatient(userid, password):
-        pass
-
-
-# id = input()
-
-# doctor_cursor.execute("SELECT * FROM doctors")
-# rows = doctor_cursor.fetchall()
-
-
-# for row in rows:
-#     if(id in row[2]):
-#         print("Loged IN")
-
+     patient_cursor.execute("SELECT * FROM doctors")
+     rows = patient_cursor.fetchall()
+     for row in rows:
+        if(row[2] in id):
+              return True
+     return False
 
