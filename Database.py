@@ -36,21 +36,42 @@ insert_patient = "INSERT INTO patients (name,age,gender,pat_id,password) VALUES 
 insert_doctor = "INSERT INTO doctors (name,age,doc_id,password,specialization) VALUES (?,?,?,?,?)"
 
 
-patient_cursor.execute(insert_patient,("Subhadeep Ghorai", 21, "Male", "patadmin", 1234))
-patient_cursor.execute(insert_patient,("Laiba Razi", 21, "Female", "pat_01",2345))
-patient_cursor.execute(insert_patient,("Avi", 21, "Male", "pat_02", 5764))
+# patient_cursor.execute(insert_patient,("Subhadeep Ghorai", 21, "Male", "patadmin", 1234))
+# patient_cursor.execute(insert_patient,("Laiba Razi", 21, "Female", "pat_01",2345))
+# patient_cursor.execute(insert_patient,("Avi", 21, "Male", "pat_02", 5764))
 
 
-doctor_cursor.execute(insert_doctor,("Subhadeep Ghorai", 45, "docadmin", 1234, "Cardiology"))
-doctor_cursor.execute(insert_doctor,("Supriti Nayek", 45, "doc_01", 9800, "Cardiology"))
-doctor_cursor.execute(insert_doctor,("Rahul Dutta", 45, "doc_02", 3654, "Cardiology"))
+# doctor_cursor.execute(insert_doctor,("Subhadeep Ghorai", 45, "docadmin", 1234, "Cardiology"))
+# doctor_cursor.execute(insert_doctor,("Supriti Nayek", 45, "doc_01", 9800, "Cardiology"))
+# doctor_cursor.execute(insert_doctor,("Rahul Dutta", 45, "doc_02", 3654, "Cardiology"))
 
 
-patient_database.commit()
-doctor_database.commit()
+# patient_database.commit()
+# doctor_database.commit()
 
-patient_database.close()
-doctor_database.close()
+# patient_database.close()
+# doctor_database.close()
 
+
+def GetDoctorName(id):
+    pass
+
+def GetPatientName(id):
+        pass
+def ValidDoctor(userid, password):
+        pass
+def ValidPatient(userid, password):
+        pass
+
+
+# id = input()
+
+# doctor_cursor.execute("SELECT * FROM doctors")
+# rows = doctor_cursor.fetchall()
+
+
+# for row in rows:
+#     if(id in row[2]):
+#         print("Loged IN")
 
 
