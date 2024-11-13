@@ -3,8 +3,6 @@ import datetime
 from tkinter import messagebox
 
 
-
-
 class Admin:
     def AdminDashboard(self):
         self.window = Tk()

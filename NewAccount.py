@@ -10,19 +10,8 @@ class NewUser:
         self.window.title("New Account")
 
         Label(self.window, text=f"Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
-        roles = ["Doctor","Patient"]
-        selected_role = StringVar()
-        selected_role.set(roles[0])
 
-        OptionMenu(self.window,selected_role,*roles).pack(padx=10)
-        if selected_role.get()==roles[0]:
-            CreateDoctorAccount()
-        elif selected_role.get()==roles[1]:
-            CreatePatientAccount()
-
-
-
-
+    
         def CreatePatientAccount():
             Label(self.window, text=f"Create new account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
@@ -38,11 +27,14 @@ class NewUser:
             Gender = Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
 
 
-            def Confirm()
+            def Confirm():
+                pass
 
             Button(self.window, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
 
 
+
+       
 
         def CreateDoctorAccount():
             Label(self.window, text=f"Create new account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
@@ -60,6 +52,15 @@ class NewUser:
 
             Button(self.window, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
 
+
+        roles = ["Admin","Doctor","Patient"]
+        selected_role = StringVar()
+        selected_role.set(roles[0])
+        OptionMenu(self.window,selected_role,*roles).pack(padx=10)
+        if selected_role.get()==roles[0]:
+            CreateDoctorAccount()
+        elif Menu.get()==roles[1]:
+            CreatePatientAccount()
 
 
 
