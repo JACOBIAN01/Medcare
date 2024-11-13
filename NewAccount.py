@@ -1,6 +1,5 @@
 from tkinter import *
-#Name age id password field - Doctor
-#name,age,gender,id,password - Patient
+
 
 
 class NewUser:
@@ -11,8 +10,37 @@ class NewUser:
         self.window.title("New Account")
 
         Label(self.window, text=f"Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
+        roles = ["Doctor","Patient"]
+        selected_role = StringVar()
+        selected_role.set(roles[0])
+
+        OptionMenu(self.window,selected_role,*roles).pack(padx=10)
+        if selected_role.get()==roles[0]:
+            CreateDoctorAccount()
+        elif selected_role.get()==roles[1]:
+            CreatePatientAccount()
 
 
+
+
+        def CreatePatientAccount():
+            Label(self.window, text=f"Create new account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
+
+            Label(self.window, text=f"Enter Your Name", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
+            Name = Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Label(self.window, text=f"Enter Your age",  bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
+            Age = Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Label(self.window, text=f"Enter Your user_id", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
+            User_ID = Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Label(self.window, text=f"Enter Your Password ",  bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
+            Password= Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Label(self.window, text=f"Enter Your Gender",  bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
+            Gender = Entry(self.window, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+
+
+            def Confirm()
+
+            Button(self.window, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
 
 
 
@@ -33,7 +61,7 @@ class NewUser:
             Button(self.window, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
 
 
-        CreateDoctorAccount()
+
 
         self.window.mainloop()
 
