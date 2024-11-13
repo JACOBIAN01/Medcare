@@ -9,8 +9,6 @@ class NewUser:
         self.window.config(bg="#2F4F4F")
         self.window.title("New Account")
 
-        Label(self.window, text=f"Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
-
     
         def CreatePatientAccount():
             Label(self.window, text=f"Create new account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
@@ -34,8 +32,6 @@ class NewUser:
 
 
 
-       
-
         def CreateDoctorAccount():
             Label(self.window, text=f"Create new account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
@@ -52,19 +48,22 @@ class NewUser:
 
             Button(self.window, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
 
+        Label(self.window, text=f"Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
-        roles = ["Admin","Doctor","Patient"]
-        selected_role = StringVar()
-        selected_role.set(roles[0])
+        roles = ["Doctor","Patient"]
+        selected_role = StringVar(value=roles[0])
         OptionMenu(self.window,selected_role,*roles).pack(padx=10)
-        if selected_role.get()==roles[0]:
-            CreateDoctorAccount()
-        elif Menu.get()==roles[1]:
-            CreatePatientAccount()
 
+        def Continue():
+            if selected_role.get()==roles[0]:
+                CreateDoctorAccount()
+            elif selected_role.get()==roles[1]:
+                CreateDoctorAccount()
 
+        Button(self.window,text="Continue",command=Continue, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
         self.window.mainloop()
+
 
 
 nu = NewUser()
