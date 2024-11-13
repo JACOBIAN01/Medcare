@@ -40,7 +40,7 @@ class Patient:
 
             def Report():
                 with open("History.txt", "a") as file:
-                    file.write(f"Consultation Booked. Doctor: {selected_doctor.get()} | Patient Name: {Name} | Time: {selected_time.get()} | Booking Date: {datetime.datetime.now().date()}\n")
+                    file.write(f"Consultation Booked. Doctor: Dr. {selected_doctor.get()} | Patient Name: {Name} | Time: {selected_time.get()} | Booking Date: {datetime.datetime.now().date()}\n")
                 messagebox.showinfo("Confirmation", "Consultation Booked Successfully!")
 
             Button(self.window, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold")).pack(pady=15)
