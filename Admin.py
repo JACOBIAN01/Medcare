@@ -46,10 +46,15 @@ class Admin:
                 messagebox.showerror("Error", "Invalid Password Format")
         
         def CreateAccount():
-            pass
+            import NewAccount
+            self.window.destroy()
+            NewAccount.NewUser.Account(self)
+
 
         Button(self.window, text="Login", command=auth, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         Label(self.window, text="Don't Have any Account ? Create One", bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
         Button(self.window, text="Sign Up", command=CreateAccount, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+        
+        
         self.window.mainloop()
 

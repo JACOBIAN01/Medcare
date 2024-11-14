@@ -14,6 +14,8 @@ class NewUser:
                 if isinstance(widget, Frame):
                     widget.destroy()
 
+
+
         def CreatePatientAccount():
             clear_frame()  
 
@@ -76,7 +78,14 @@ class NewUser:
             elif selected_role.get() == "Patient":
                 CreatePatientAccount()
 
+
+        def Back():
+            self.window.destroy()
+            import Admin
+            Admin.Admin.AdminDashboard(self)
+
         Button(self.window, text="Continue", command=Continue, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+        Button(self.window, text="Back", command=Back, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
         self.window.mainloop()
 
