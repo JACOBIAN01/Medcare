@@ -108,8 +108,3 @@ def PatientDetails():
 
 
 
-
-print(GetAllDoctors())
-print(GetAllPatients())
-
-

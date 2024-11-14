@@ -27,6 +27,12 @@ class Patient:
 
         def ConsultBooking():
 
+            self.consult_frame = Frame(self.window,height=30,bg="lightblue")
+            self.consult_frame.pack(fill="both")
+
+            # if self.consult_frame.winfo_exists() and hasattr(self,'consult_frame'):
+            #     self.consult_frame.destroy()
+
             
             Doctors = Database.GetAllDoctors()
             Times = [f"{time} PM" for time in range(1, 13)]
@@ -34,13 +40,13 @@ class Patient:
             selected_doctor = StringVar(value=Doctors[0])
             selected_time = StringVar(value=Times[0])
 
-            Label(self.window, text="Select Doctor:", bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=0, pady=5)
-            ChooseDoctor = OptionMenu(self.window, selected_doctor, *Doctors)
+            Label(self.consult_frame, text="Select Doctor:", bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=0, pady=5)
+            ChooseDoctor = OptionMenu(self.consult_frame, selected_doctor, *Doctors)
             ChooseDoctor.config(width=30, font=("Helvetica", 12))
             ChooseDoctor.grid(column=2,row=0, pady=5)
 
-            Label(self.window, text="Select Time:", bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=1, pady=5)
-            SelectTime = OptionMenu(self.window, selected_time, *Times)
+            Label(self.consult_frame, text="Select Time:", bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=1, pady=5)
+            SelectTime = OptionMenu(self.consult_frame, selected_time, *Times)
             SelectTime.config(width=30, font=("Helvetica", 12))
             SelectTime.grid(row=1,column=2,pady=5)
 
@@ -50,7 +56,13 @@ class Patient:
                     file.write(f"Consultation Booked. Doctor: Dr. {selected_doctor.get()} | Patient Name: {Name} | Time: {selected_time.get()} | Booking Date: {datetime.datetime.now().date()}\n")
                 messagebox.showinfo("Confirmation", "Consultation Booked Successfully!")
 
-            Button(self.window, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold")).pack(pady=15)
+            def Cancel():
+                self.consult_frame.destroy()
+
+            Confirm = Button(self.consult_frame, text="Confirm", command=Report, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
+            Confirm.grid(pady=15,column=1,row=3)
+            CancelButton = Button(self.consult_frame, text="Cancel", command=Cancel, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
+            CancelButton.grid(pady=15,row=3,column=2)
 
         ConsultBook = Button(Navbar, text="Book Consultation", command=ConsultBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         ConsultBook.pack(pady=10,side="left")
@@ -58,3 +70,4 @@ class Patient:
         LogOut.pack(pady=10,side="left")
 
         self.window.mainloop()
+

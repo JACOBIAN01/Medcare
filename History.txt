@@ -1,1 +1,2 @@
 Consultation Booked. Doctor: Dr. Rahul Dutta | Patient Name: Subhadeep Ghorai | Time: 5 PM | Booking Date: 2024-11-14
+Consultation Booked. Doctor: Dr. Subhadeep Ghorai | Patient Name: Subhadeep Ghorai | Time: 1 PM | Booking Date: 2024-11-14
