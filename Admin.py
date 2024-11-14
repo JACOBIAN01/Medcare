@@ -10,6 +10,9 @@ class Admin:
         self.window.config(bg="#2F4F4F")
         self.window.title("MedCare - Admin Panel")
         self.window.iconbitmap("./Static/MedCareLogo.ico")
+
+        Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
+        Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
    
         Label(self.window, text="Welcome to MedCare", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 

@@ -96,5 +96,20 @@ def AddPatient(name,age,gender,id,password):
      patient_database.close()
 
 
+def DeleteDoctor():
+     pass
+
+def DocDetails():
+     pass
+
+def PatientDetails():
+     pass
+
+
+
+
+
+print(GetAllDoctors())
+print(GetAllPatients())
 
 

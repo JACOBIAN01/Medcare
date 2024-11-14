@@ -8,6 +8,9 @@ class NewUser:
         self.window.config(bg="#2F4F4F")
         self.window.title("New Account")
 
+        Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
+        Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
+
         
         def clear_frame():
             for widget in self.window.winfo_children():

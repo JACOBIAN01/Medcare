@@ -11,6 +11,9 @@ class Doctor:
         self.window.iconbitmap("./Static/MedCareLogo.ico")
         Name = Database.GetDoctorName(id)
 
+        Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
+        Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
+
         Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 
         def LogOut():
