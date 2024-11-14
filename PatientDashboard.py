@@ -15,6 +15,13 @@ class Patient:
         Navbar = Frame(self.window,bg="cyan",height=55)
         Navbar.pack(fill="x",side="top")
 
+        def UpdateProfile():
+            pass
+
+        Update = Button(Navbar, text="Profile", command=UpdateProfile, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
+        Update.pack(pady=5,side="right",padx=2)
+
+
         Header = Label(Navbar,text=f"Welcome, {Name}",bg="cyan", fg="black", font=("Alice", 15,"bold"))
         Header.pack(pady=5,side="right")
 
