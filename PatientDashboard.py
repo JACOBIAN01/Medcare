@@ -15,7 +15,7 @@ class Patient:
         Navbar = Frame(self.window,bg="cyan",height=55)
         Navbar.pack(fill="x",side="top")
 
-        Header = Label(Navbar,text=f"Welcome {Name}",bg="cyan", fg="black", font=("Alice", 15,"bold"))
+        Header = Label(Navbar,text=f"Welcome, {Name}",bg="cyan", fg="black", font=("Alice", 15,"bold"))
         Header.pack(pady=5,side="right")
 
 
@@ -27,11 +27,13 @@ class Patient:
 
         def ConsultBooking():
 
+            if hasattr(self,'consult_frame') and self.consult_frame.winfo_exists() :
+                  self.consult_frame.destroy()
+
             self.consult_frame = Frame(self.window,height=30,bg="lightblue")
             self.consult_frame.pack(fill="both")
 
-            # if self.consult_frame.winfo_exists() and hasattr(self,'consult_frame'):
-            #     self.consult_frame.destroy()
+
 
             
             Doctors = Database.GetAllDoctors()
@@ -71,3 +73,5 @@ class Patient:
 
         self.window.mainloop()
 
+pt =Patient()
+pt.PatientDashboard("admin")
