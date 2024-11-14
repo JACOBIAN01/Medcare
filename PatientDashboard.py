@@ -16,7 +16,15 @@ class Patient:
         Navbar.pack(fill="x",side="top")
 
         def UpdateProfile():
-            pass
+            if hasattr(self,'profile_frame') and self.profile_frame.winfo_exists() :
+                  self.profile_frame.destroy()
+
+            self.profile_frame = Frame(self.window,bg="cyan",width=250)
+            self.profile_frame.pack(side="right",fill="y")
+
+
+            
+
 
         Update = Button(Navbar, text="Profile", command=UpdateProfile, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         Update.pack(pady=5,side="right",padx=2)
