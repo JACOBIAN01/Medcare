@@ -25,7 +25,6 @@ class Welcome:
             import Admin
             Admin.Admin.AdminDashboard(self)
         Button(self.window, text="Continue", command=welcome, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
-
         self.window.mainloop()
 
 

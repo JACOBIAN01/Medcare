@@ -72,7 +72,8 @@ class NewUser:
         Label(self.window, text="Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
         roles = ["Doctor", "Patient"]
-        selected_role = StringVar(value=roles[0])
+        selected_role = StringVar()
+        selected_role.set(roles[0])
         OptionMenu(self.window, selected_role, *roles).pack(padx=10)
 
         def Continue():
@@ -91,7 +92,3 @@ class NewUser:
         Button(self.window, text="Back", command=Back, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
 
         self.window.mainloop()
-
-
-nu = NewUser()
-nu.Account()

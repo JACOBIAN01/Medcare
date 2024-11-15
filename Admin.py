@@ -49,8 +49,8 @@ class Admin:
                 messagebox.showerror("Error", "Invalid Password Format")
         
         def CreateAccount():
-            import NewAccount
             self.window.destroy()
+            import NewAccount
             NewAccount.NewUser.Account(self)
 
 

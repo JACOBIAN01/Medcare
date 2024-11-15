@@ -16,18 +16,36 @@ class Patient:
         Navbar.pack(fill="x",side="top")
 
         def UpdateProfile():
-            if hasattr(self,'profile_frame') and self.profile_frame.winfo_exists() :
-                  self.profile_frame.destroy()
 
-            self.profile_frame = Frame(self.window,bg="cyan",width=250)
-            self.profile_frame.pack(side="right",fill="y")
+            if hasattr(self,'profile_frame') and profile_frame.winfo_exists() :
+                  profile_frame.destroy()
+
+            profile_frame = Frame(self.window,bg="cyan",width=250)
+            profile_frame.pack(side="right",fill="y")
+
+            profile_des= Label(profile_frame,text="Your Profile",bg="#4682B4", fg="white", font=("Helvetica",8, "bold"),padx=10)
+            profile_des.grid(row=0,column=1)
+
+            NameText = Label(profile_frame,text="Update Name",bg="#4682B4", fg="white", font=("Helvetica", 8, "bold"))
+            NameText.grid(row=1,column=0)
+
+            Name_Entry = Entry(profile_frame)
+            Name_Entry.grid(row=1,column=1)
 
 
+            Update = Button(profile_frame, text="Update", command=UpdateProfile, bg="#4682B4", fg="white", font=("Helvetica",8, "bold"),relief="groove")
+            Update.grid(row=3,column=1)
+
+            def Close():
+                profile_frame.destroy()
             
+            Close = Button(profile_frame, text="Close", command=Close, bg="#4682B4", fg="white", font=("Helvetica",8, "bold"),relief="groove")
+            Close.grid(row=3,column=0)
 
 
-        Update = Button(Navbar, text="Profile", command=UpdateProfile, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
-        Update.pack(pady=5,side="right",padx=2)
+
+        Profile = Button(Navbar, text="Profile", command=UpdateProfile, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
+        Profile.pack(pady=5,side="right",padx=2)
 
 
         Header = Label(Navbar,text=f"Welcome, {Name}",bg="cyan", fg="black", font=("Alice", 15,"bold"))
@@ -88,5 +106,7 @@ class Patient:
 
         self.window.mainloop()
 
-pt =Patient()
+
+
+pt = Patient()
 pt.PatientDashboard("admin")
