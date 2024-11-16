@@ -56,7 +56,19 @@ class Patient:
             self.window.destroy()
             import Welcome
             welcome = Welcome()
+
+        def ViewHistory():
+            if hasattr(self,'history_frame') and self.consult_frame.winfo_exists() :
+                  self.consult_frame.destroy()
             
+            self.history_frame = Frame(self.window,height=50,bg="lightblue")
+            self.history_frame.pack(fill="both")
+            History_Label = Label(self.history_frame,bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=0, pady=5)
+            History_Label.pack()
+
+
+
+            #Update Patient Profile with Patient Data
 
         def ConsultBooking():
 
@@ -98,15 +110,19 @@ class Patient:
             Confirm.grid(pady=15,column=1,row=3)
             CancelButton = Button(self.consult_frame, text="Cancel", command=Cancel, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
             CancelButton.grid(pady=15,row=3,column=2)
+            
 
         ConsultBook = Button(Navbar, text="Book Consultation", command=ConsultBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         ConsultBook.pack(pady=10,side="left")
+        History = Button(Navbar, text="View History", command=ViewHistory, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
+        History.pack(pady=10,side='left')
         LogOut = Button(Navbar, text="LogOut", command=LogOutFunc, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         LogOut.pack(pady=10,side="left")
+
 
         self.window.mainloop()
 
 
-
+# Creating Object from  Patient Dashboard 
 pt = Patient()
 pt.PatientDashboard("admin")
