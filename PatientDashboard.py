@@ -59,16 +59,25 @@ class Patient:
 
         def ViewHistory():
             if hasattr(self,'history_frame') and self.consult_frame.winfo_exists() :
-                  self.consult_frame.destroy()
+                  self.history_frame.destroy()
             
+            
+            import ConsultationDB
+            my_history=ConsultationDB.PatHistory(Name)
+            def Frame_Destroy():
+                self.history_frame.destroy()
+
             self.history_frame = Frame(self.window,height=50,bg="lightblue")
             self.history_frame.pack(fill="both")
-            History_Label = Label(self.history_frame,bg="#2F4F4F", fg="white", font=("Helvetica", 12)).grid(column=1,row=0, pady=5)
+            History_Label = Label(self.history_frame,bg="#2F4F4F", fg="white", font=("Helvetica", 12),text=my_history)
             History_Label.pack()
+            Cancel_button = Button(self.history_frame, text="Close", command=Frame_Destroy, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
+            Cancel_button.pack()
 
 
 
-            #Update Patient Profile with Patient Data
+
+
 
         def ConsultBooking():
 

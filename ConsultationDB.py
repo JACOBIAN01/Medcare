@@ -43,36 +43,44 @@ def DocHistory(name):
     cursor.execute("SELECT * FROM history WHERE doctor = ?", (name,))
     history = cursor.fetchall()
     if history:
+        result = []
         for item in history:
             doctor = item[0]
             patient = item[1]
             time = item[2]
             date = item[3]
-            print(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
+            result.append(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
+        return "\n".join(result) 
     else:
-        print(f"No consultation history found for Dr. {name}")
-
+        return f"No consultation history found for Dr. {name}"
 def PatHistory(name):
     cursor.execute("SELECT * FROM history WHERE patient = ?", (name,))
     history = cursor.fetchall()
     if history:
+        result = []
         for item in history:
             doctor = item[0]
             patient = item[1]
             time = item[2]
             date = item[3]
-            print(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
+            result.append(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
+        return "\n".join(result) 
     else:
-        print(f"No consultation history found for Dr. {name}")
+        return f"No consultation history found for Patient {name}"
 
 
-
+# ClearHistory()
 
 
 #Get Details of Doctors
-# AddHistory("Subhadeep Ghorai","Laiba","3 PM","20-11-2024")
-# AddHistory("Supriti Nayek","Subha","5 PM","23-10-2024")
+# AddHistory("Subhadeep Ghorai","Laiba Razi","3 PM","20-11-2024")
+# AddHistory("Supriti Nayek","Subhadeep Ghorai","5 PM","23-10-2024")
+# AddHistory("Supriti Nayek","Subhadeep Ghorai","6 PM","24-10-2024")
+# AddHistory("Supriti Nayek","Subhadeep Ghorai","7 PM","25-10-2024")
+# AddHistory("Supriti Nayek","Subhadeep Ghorai","8 PM","27-10-2024")
+# # print(DocHistory("Supriti Nayek"))
+# print(PatHistory("Avi"))
 
-# DocHistory("Supriti Nayek")
-# PatHistory("Laiba")
+# GetAllHistory()
 
+# ClearHistory()
