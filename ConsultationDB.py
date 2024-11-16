@@ -69,18 +69,4 @@ def PatHistory(name):
         return f"No consultation history found for Patient {name}"
 
 
-# ClearHistory()
 
-
-#Get Details of Doctors
-# AddHistory("Subhadeep Ghorai","Laiba Razi","3 PM","20-11-2024")
-# AddHistory("Supriti Nayek","Subhadeep Ghorai","5 PM","23-10-2024")
-# AddHistory("Supriti Nayek","Subhadeep Ghorai","6 PM","24-10-2024")
-# AddHistory("Supriti Nayek","Subhadeep Ghorai","7 PM","25-10-2024")
-# AddHistory("Supriti Nayek","Subhadeep Ghorai","8 PM","27-10-2024")
-# # print(DocHistory("Supriti Nayek"))
-# print(PatHistory("Avi"))
-
-# GetAllHistory()
-
-# ClearHistory()

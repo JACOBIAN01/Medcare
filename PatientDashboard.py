@@ -73,6 +73,7 @@ class Patient:
             History_Label.pack()
             Cancel_button = Button(self.history_frame, text="Close", command=Frame_Destroy, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
             Cancel_button.pack()
+            
 
 
 
