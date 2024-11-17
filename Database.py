@@ -36,6 +36,16 @@ insert_patient = "INSERT INTO patients (name,age,gender,pat_id,password) VALUES 
 insert_doctor = "INSERT INTO doctors (name,age,doc_id,password,specialization) VALUES (?,?,?,?,?)"
 
 
+def GetAllDoctorDetails():
+     doctor_cursor.execute("SELECT * FROM doctors")
+     doctors = doctor_cursor.fetchall()
+     print(doctors)
+
+def GetAllPatientDetails():
+     patient_cursor.execute("SELECT * FROM patients")
+     patient = patient_cursor.fetchall()
+     print(patient)
+
 
 def GetDoctorName(id):
    doctor_cursor.execute("SELECT name FROM doctors WHERE doc_id = ?",(id,))
@@ -51,6 +61,7 @@ def GetPatientName(id):
 def ValidDoctor(userid, password):
         doctor_cursor.execute("SELECT * FROM doctors WHERE doc_id =? AND password = ?",(userid,password))
         return bool(doctor_cursor.fetchone())
+
 
 
 def ValidPatient(userid, password):
@@ -104,3 +115,8 @@ def DocDetails():
 
 def PatientDetails():
      pass
+
+
+
+# GetAllDoctorDetails()
+# GetAllPatientDetails()

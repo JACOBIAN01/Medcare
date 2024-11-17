@@ -2,7 +2,7 @@
 from tkinter import *
 
 class Welcome:
-    def __init__(self):
+    def WelcomeDashboard(self):
         self.window = Tk()
         self.window.geometry("1280x720")
         self.window.config(bg="#2F4F4F")
@@ -30,4 +30,5 @@ class Welcome:
 
 
 
-welcome = Welcome()
+welcomeuser = Welcome().WelcomeDashboard()
+

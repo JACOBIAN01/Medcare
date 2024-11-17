@@ -56,7 +56,7 @@ class Patient:
         def LogOutFunc():
             self.window.destroy()
             import Welcome
-            welcome = Welcome()
+            Welcome.welcomeuser.WelcomeDashboard()
 
         def ViewHistory():
             if hasattr(self,'history_frame') and self.history_frame.winfo_exists() :
@@ -70,7 +70,7 @@ class Patient:
                 self.history_frame.destroy()
 
             def CancelBooking():
-                ConsultationDB.ClearHistory()
+                ConsultationDB.ClearPatHistory(Name)
             
 
             self.history_frame = Frame(self.window,height=50,bg="lightblue")
@@ -135,7 +135,3 @@ class Patient:
 
         self.window.mainloop()
 
-
-# Creating Object from  Patient Dashboard 
-pt = Patient()
-pt.PatientDashboard("admin")
