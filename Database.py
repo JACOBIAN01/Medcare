@@ -104,4 +104,3 @@ def DocDetails():
 
 def PatientDetails():
      pass
-

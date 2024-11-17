@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import datetime
 import Database
+import ConsultationDB
 class Patient:
     def PatientDashboard(self, id):
         self.window = Tk()
@@ -58,27 +59,30 @@ class Patient:
             welcome = Welcome()
 
         def ViewHistory():
-            if hasattr(self,'history_frame') and self.consult_frame.winfo_exists() :
+            if hasattr(self,'history_frame') and self.history_frame.winfo_exists() :
                   self.history_frame.destroy()
             
             
             import ConsultationDB
-            my_history=ConsultationDB.PatHistory(Name)
+            self.my_history=ConsultationDB.PatHistory(Name)
+
             def Frame_Destroy():
                 self.history_frame.destroy()
 
-            self.history_frame = Frame(self.window,height=50,bg="lightblue")
-            self.history_frame.pack(fill="both")
-            History_Label = Label(self.history_frame,bg="#2F4F4F", fg="white", font=("Helvetica", 12),text=my_history)
-            History_Label.pack()
-            Cancel_button = Button(self.history_frame, text="Close", command=Frame_Destroy, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
-            Cancel_button.pack()
+            def CancelBooking():
+                ConsultationDB.ClearHistory()
             
 
-
-
-
-
+            self.history_frame = Frame(self.window,height=50,bg="lightblue")
+            self.history_frame.pack(fill="both")
+            History_Label = Label(self.history_frame,bg="#2F4F4F", fg="white", font=("Helvetica", 12),text=self.my_history)
+            History_Label.pack()
+            Close_button = Button(self.history_frame, text="Close", command=Frame_Destroy, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
+            Close_button.pack()
+            Close_button = Button(self.history_frame, text="Cancel Booking", command=CancelBooking, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"))
+            Close_button.pack()
+            
+            
 
         def ConsultBooking():
 
@@ -88,9 +92,6 @@ class Patient:
             self.consult_frame = Frame(self.window,height=30,bg="lightblue")
             self.consult_frame.pack(fill="both")
 
-
-
-            
             Doctors = Database.GetAllDoctors()
             Times = [f"{time} PM" for time in range(1, 13)]
 
@@ -109,8 +110,10 @@ class Patient:
 
 
             def Report():
-                with open("History.txt", "a") as file:
-                    file.write(f"Consultation Booked. Doctor: Dr. {selected_doctor.get()} | Patient Name: {Name} | Time: {selected_time.get()} | Booking Date: {datetime.datetime.now().date()}\n")
+                try:
+                  ConsultationDB.AddHistory(selected_doctor.get(),Name,selected_time.get(),datetime.date.today())
+                except E:
+                    print(E)
                 messagebox.showinfo("Confirmation", "Consultation Booked Successfully!")
 
             def Cancel():

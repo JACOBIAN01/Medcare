@@ -20,6 +20,10 @@ cursor.execute(consultation_history)
 insert_history = "INSERT INTO history (doctor,patient,time,booking_date) VALUES (?,?,?,?)"
 
 def AddHistory(doctor,patient,time,booking_date):
+    doctor = str(doctor)
+    patient = str(patient)
+    time = str(time)
+    booking_date = str(booking_date)
     cursor.execute(insert_history,(doctor,patient,time,booking_date))
     conn.commit()
 
@@ -53,20 +57,27 @@ def DocHistory(name):
         return "\n".join(result) 
     else:
         return f"No consultation history found for Dr. {name}"
+    
+    
 def PatHistory(name):
     cursor.execute("SELECT * FROM history WHERE patient = ?", (name,))
     history = cursor.fetchall()
     if history:
-        result = []
+        results = []
+        
         for item in history:
             doctor = item[0]
             patient = item[1]
             time = item[2]
             date = item[3]
-            result.append(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
-        return "\n".join(result) 
+            results.append(f"Doctor: Dr.{doctor}, Patient: {patient}, Time: {time}, Date: {date}")
+        return "\n".join(results)
     else:
         return f"No consultation history found for Patient {name}"
 
+
+def ClearPatHistory(name):
+    cursor.execute("DELETE FROM history WHERE patient =?",(name))
+    conn.commit()
 
 
