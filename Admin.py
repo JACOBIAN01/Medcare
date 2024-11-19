@@ -32,7 +32,7 @@ class Admin:
 
         def auth():
             import Database
-            password = int(PassWord.get())
+            password = PassWord.get()
             user_id = UserID.get()
             try:
                 if Database.ValidDoctor(user_id, password) and selected_role.get().lower() == "doctor":

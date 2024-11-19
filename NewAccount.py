@@ -22,10 +22,15 @@ class NewUser:
         def CreatePatientAccount(self):
             clear_frame()  
 
-            def createNewPat(name,age,id,password,gender):
+            def createNewPat():
                     import Database
+                    name = Pat_Name.get()
+                    age = Pat_age.get()
+                    id = Pat_id.get()
+                    password = Pat_pass.get()
+                    gender = pat_gender.get()
                     Database.AddPatient(name,age,id,password,gender)
-                    messagebox.INFO('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nGender:{gender}")
+                    messagebox.showinfo('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nGender:{gender}")
 
             frame = Frame(self.window, padx=20, pady=20, bg="cyan")
             frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -65,7 +70,7 @@ class NewUser:
                     field = Doc_field.get()
                     import Database
                     Database.AddDoctor(name,age,id,password,field)
-                    messagebox.INFO('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nField:{field}")
+                    messagebox.showinfo('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nField:{field}")
             
 
             frame = Frame(self.window, padx=20, pady=20, bg="cyan")
@@ -104,9 +109,9 @@ class NewUser:
 
         def Continue():
             if selected_role.get() == "Doctor":
-                CreateDoctorAccount()
+                CreateDoctorAccount(self)
             elif selected_role.get() == "Patient":
-                CreatePatientAccount()
+                CreatePatientAccount(self)
 
 
         def Back():

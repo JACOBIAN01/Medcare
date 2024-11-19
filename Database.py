@@ -106,8 +106,14 @@ def AddPatient(name,age,gender,id,password):
      patient_database.commit()
     
 
-def DeleteDoctor():
-     pass
+def DeleteDoctor(name):
+     doctor_cursor.execute("DELETE from doctors WHERE name = ?",(name,))
+     doctor_database.commit()
+
+def Deletepatient(name):
+     patient_cursor.execute("DELETE from patients WHERE name = ?",(name,))
+     patient_database.commit()
+
 
 def DocDetails():
      pass
@@ -116,6 +122,6 @@ def PatientDetails():
      pass
 
 
-
+# DeleteDoctor("a")
 # GetAllDoctorDetails()
 # GetAllPatientDetails()
