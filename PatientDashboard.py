@@ -70,6 +70,7 @@ class Patient:
                 self.history_frame.destroy()
 
             def CancelBooking():
+                History_Label.config(text=f"No consultation history found for Dr. {Name}")
                 ConsultationDB.ClearPatHistory(Name)
             
 

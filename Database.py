@@ -99,13 +99,12 @@ def ClearDatabase():
 def AddDoctor(name,age,id,password,field):
      doctor_cursor.execute(insert_doctor,(name,age,id,password,field))
      doctor_database.commit()
-     doctor_database.close()
+     
 
 def AddPatient(name,age,gender,id,password):
      patient_cursor.execute(insert_patient,(name,age,gender,id,password))
      patient_database.commit()
-     patient_database.close()
-
+    
 
 def DeleteDoctor():
      pass

@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import messagebox
 
 class NewUser:
     def Account(self):
@@ -19,8 +19,13 @@ class NewUser:
 
 
 
-        def CreatePatientAccount():
+        def CreatePatientAccount(self):
             clear_frame()  
+
+            def createNewPat(name,age,id,password,gender):
+                    import Database
+                    Database.AddPatient(name,age,id,password,gender)
+                    messagebox.INFO('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nGender:{gender}")
 
             frame = Frame(self.window, padx=20, pady=20, bg="cyan")
             frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -28,24 +33,40 @@ class NewUser:
             Label(frame, text="Create New Patient Account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
             Label(frame, text="Enter Your Name", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Pat_Name=Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Pat_Name.pack()
 
             Label(frame, text="Enter Your Age", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Pat_age =Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Pat_age.pack()
 
             Label(frame, text="Enter Your User ID", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Pat_id = Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Pat_id.pack()
 
             Label(frame, text="Enter Your Password", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1, show="*").pack()
+            Pat_pass = Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1, show="*")
+            Pat_pass.pack()
 
             Label(frame, text="Enter Your Gender", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            pat_gender = Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            pat_gender.pack()
 
-            Button(frame, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
+            Button(frame, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5,command=createNewPat).pack(pady=20)
 
-        def CreateDoctorAccount():
+        def CreateDoctorAccount(self):
             clear_frame()  # Clear any existing frames
+
+            def createNewDoc():
+                    name = Doc_Name.get()
+                    age = Doc_age.get()
+                    id = Doc_id.get()
+                    password = Doc_pass.get()
+                    field = Doc_field.get()
+                    import Database
+                    Database.AddDoctor(name,age,id,password,field)
+                    messagebox.INFO('INFO',f"Account Successfully Created .\nName:{name}\nAge:{age}\nID:{id}\nPassword:{password}\nField:{field}")
+            
 
             frame = Frame(self.window, padx=20, pady=20, bg="cyan")
             frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -53,21 +74,26 @@ class NewUser:
             Label(frame, text="Create New Doctor Account", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 
             Label(frame, text="Enter Your Name", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Doc_Name = Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Doc_Name.pack()
 
             Label(frame, text="Enter Your Age", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Doc_age=Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Doc_age.pack()
 
             Label(frame, text="Enter Your User ID", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Doc_id=Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Doc_id.pack()
 
             Label(frame, text="Enter Your Password", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1, show="*").pack()
+            Doc_pass = Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1, show="*")
+            Doc_pass.pack()
 
             Label(frame, text="Enter Your Field", bg="#2F4F4F", fg="#ADD8E6", font=("Times", 12, "bold")).pack(pady=(10, 0))
-            Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1).pack()
+            Doc_field= Entry(frame, font=("Arial", 12), width=30, relief="flat", bd=2, highlightbackground="#ADD8E6", highlightcolor="#ADD8E6", highlightthickness=1)
+            Doc_field.pack()
 
-            Button(frame, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5).pack(pady=20)
+            Button(frame, text="Create Account", font=("Helvetica", 12, "bold"), bg="#4682B4", fg="white", activebackground="#5A9BD5", activeforeground="white", relief="flat", bd=3, padx=10, pady=5,command=createNewDoc).pack(pady=20)
 
         Label(self.window, text="Choose Your Role", bg="#2F4F4F", fg="white", font=("Helvetica", 18, "bold"), pady=10).pack()
 

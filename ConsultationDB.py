@@ -13,6 +13,7 @@ booking_date TEXT NOT NULL
 )
 """
 
+
 cursor.execute(consultation_history)
 insert_history = "INSERT INTO history (doctor,patient,time,booking_date) VALUES (?,?,?,?)"
 
