@@ -6,12 +6,12 @@ class Welcome:
         # Create the main window
         self.window = Tk()
         self.window.geometry("1280x720")
-        self.window.config(bg="#1E1E2F")  # Dark premium background
+        self.window.config(bg="#1E1E2F")  
         self.window.title("MedCare - Admin Panel")
         self.window.iconbitmap("./Static/MedCareLogo.ico")
 
         # Navbar
-        Navbar = Frame(self.window, bg="#00ADB5", height=55)  # Modern teal accent
+        Navbar = Frame(self.window, bg="#00ADB5", height=55)  
         Navbar.pack(fill="x", side="top")
         Header = Label(Navbar, text="Welcome to MedCare", bg="#00ADB5", fg="#EEEEEE",
                        font=("Helvetica", 16, "bold"))
