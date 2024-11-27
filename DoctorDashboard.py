@@ -13,11 +13,18 @@ class Doctor:
 
         Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
         Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
+        
 
         def ShowBookings():
-            my_frame = Frame(self.window,bg='cyan',fg='black')
+            self.my_frame = Frame(self.window,bg='green',height=50,width=50)
+            self.my_frame.pack(fill="both")
+            self.newbook = Label(self.my_frame,font=("Helvetica", 14, "bold"))
+            self.newbook.pack()
+            self.patients = Database.GetPatientName(Name)
+            self.newbook.config(text=self.patients)
 
-        View_Bookings = Button(Navbar,text="View Bookings",font=("Helvetica", 14, "bold"),padx=25,pady=5,command=ShowBookings)
+
+        View_Bookings = Button(Navbar,text="View Bookings",font=("Helvetica", 11, "bold"),padx=20,pady=5,command=ShowBookings)
         View_Bookings.place(x=5,y=2)
 
         Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
@@ -27,7 +34,7 @@ class Doctor:
             import Welcome
             Welcome.welcomeuser
 
-        Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 10, "bold")).pack(pady=20)
+        Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 11, "bold"),padx=20,pady=5).place(x=165,y=2)
         self.window.mainloop()
 
 doc = Doctor().DoctorDashboard("admin")
