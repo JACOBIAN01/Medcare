@@ -14,11 +14,11 @@ class Doctor:
         Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
         Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
         
-
+        Label(self.window, text=f"Welcome {Name}", bg="cyan", fg="black", font=("Helvetica", 16, "bold")).place(x=900,y=10)
         def ShowBookings():
-            self.my_frame = Frame(self.window,bg='green',height=50,width=50)
+            self.my_frame = Frame(self.window,bg='green',height=50)
             self.my_frame.pack(fill="both")
-            self.newbook = Label(self.my_frame,font=("Helvetica", 14, "bold"))
+            self.newbook = Label(self.my_frame,font=("Helvetica", 14, "bold"),bg='green')
             self.newbook.pack()
             self.patients = Database.GetPatientName(Name)
             self.newbook.config(text=self.patients)
@@ -26,8 +26,6 @@ class Doctor:
 
         View_Bookings = Button(Navbar,text="View Bookings",font=("Helvetica", 11, "bold"),padx=20,pady=5,command=ShowBookings)
         View_Bookings.place(x=5,y=2)
-
-        Label(self.window, text=f"Welcome {Name}", bg="#2F4F4F", fg="white", font=("Helvetica", 16, "bold")).pack(pady=20)
 
         def LogOut():
             self.window.destroy()
