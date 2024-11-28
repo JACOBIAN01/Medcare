@@ -114,7 +114,6 @@ def Deletepatient(name):
      patient_cursor.execute("DELETE from patients WHERE name = ?",(name,))
      patient_database.commit()
 
-
 def DocDetails():
      pass
 

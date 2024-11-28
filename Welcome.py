@@ -53,4 +53,5 @@ class Welcome:
         self.window.mainloop()
 
 
-welcomeuser = Welcome().WelcomeDashboard()
+welcomeuser = Welcome()
+welcomeuser.WelcomeDashboard()

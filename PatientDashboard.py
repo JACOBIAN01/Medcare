@@ -51,12 +51,12 @@ class Patient:
 
         Header = Label(Navbar,text=f"Welcome, {Name}",bg="cyan", fg="black", font=("Alice", 15,"bold"))
         Header.pack(pady=5,side="right")
-        
+
 
         def LogOutFunc():
             self.window.destroy()
             import Welcome
-            Welcome.welcomeuser.WelcomeDashboard()
+            Welcome.Welcome.WelcomeDashboard(self)
 
         def ViewHistory():
             if hasattr(self,'history_frame') and self.history_frame.winfo_exists() :
