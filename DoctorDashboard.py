@@ -15,7 +15,7 @@ class Doctor:
         Navbar = Frame(self.window,bg="cyan",height=55).pack(fill="x",side="top")
         Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
         Footer_Text = Label(Footer, text="© 2024 MedCare. All Rights Reserved", fg="#EEEEEE", bg="#00ADB5",font=("Helvetica", 10, "italic"))
-        Footer_Text.pack(pady=5)
+        Footer_Text.place(x=520,y= 700)
 
         
         Label(self.window, text=f"Welcome {Name}", bg="cyan", fg="black", font=("Helvetica", 16, "bold")).place(x=900,y=10)
@@ -36,6 +36,8 @@ class Doctor:
 
         View_Bookings = Button(Navbar,text="View Bookings",font=("Helvetica", 11, "bold"),padx=20,pady=5,command=ShowBookings)
         View_Bookings.place(x=5,y=2)
+        Join_Booking = Button(Navbar,text="Join",font=("Helvetica", 11, "bold"),padx=20,pady=5)
+        Join_Booking.place(x=275,y=2)
 
         def LogOut():
             self.window.destroy()
@@ -45,3 +47,4 @@ class Doctor:
         Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 11, "bold"),padx=20,pady=5).place(x=165,y=2)
         self.window.mainloop()
 
+doc = Doctor().DoctorDashboard("admin")
