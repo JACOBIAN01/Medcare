@@ -4,10 +4,21 @@ from tkinter import messagebox , ttk
 class Room:
 
     def ConsultRoom(self,Doc,Pat):
-        self.room = Tk()
+        self.window = Tk()
+        self.window.geometry("1280x720")
+        self.window.config(bg="#2F4F4F")
+        self.window.title("MedCare - Doctor Consultation Room")
+        self.window.iconbitmap("./Static/MedCareLogo.ico")
+
+        self.Doctor_Frame = Frame(self.window,height=700,width=600,bg='cyan')
+        self.Doctor_Frame.place(x=10,y=10)
+
+        self.Patient_Frame = Frame(self.window,height=700,width=600,bg='cyan')
+        self.Patient_Frame.place(x=670,y=10)
+
+        self.window.mainloop()
 
 
-        self.room.mainloop()
 
-
-
+room = Room()
+room.ConsultRoom("Subha","Deep")
