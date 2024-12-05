@@ -19,6 +19,7 @@ class Doctor:
 
         
         Label(self.window, text=f"Welcome {Name}", bg="cyan", fg="black", font=("Helvetica", 16, "bold")).place(x=900,y=10)
+
         def ShowBookings():
             self.my_frame = Frame(self.window,bg='green',height=50)
             self.my_frame.pack(fill="both")

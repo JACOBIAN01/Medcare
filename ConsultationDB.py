@@ -6,6 +6,7 @@ cursor = conn.cursor()
 
 consultation_history ="""
 CREATE TABLE IF NOT EXISTS history(
+bookid INTEGER ,
 doctor TEXT NOT NULL,
 patient TEXT NOT NULL,
 time TEXT NOT NULL,
