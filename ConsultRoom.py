@@ -12,6 +12,9 @@ class Room:
 
         self.Doctor_Frame = Frame(self.window,height=700,width=600,bg='cyan')
         self.Doctor_Frame.place(x=10,y=10)
+        self.DocName = Label(self.Doctor_Frame,font=('Arial',10,'bold'))
+        self.DocName.place(x=20,)
+
 
 
         self.Patient_Frame = Frame(self.window,height=700,width=600,bg='cyan')

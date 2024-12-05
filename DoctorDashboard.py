@@ -34,9 +34,9 @@ class Doctor:
 
 
 
-        View_Bookings = Button(Navbar,text="View Bookings",font=("Helvetica", 11, "bold"),padx=20,pady=5,command=ShowBookings)
+        View_Bookings = Button(self.window,text="View Bookings",font=("Helvetica", 11, "bold"),padx=20,pady=5,command=ShowBookings)
         View_Bookings.place(x=5,y=2)
-        Join_Booking = Button(Navbar,text="Join",font=("Helvetica", 11, "bold"),padx=20,pady=5)
+        Join_Booking = Button(self.window,text="Join",font=("Helvetica", 11, "bold"),padx=20,pady=5)
         Join_Booking.place(x=275,y=2)
 
         def LogOut():
