@@ -23,6 +23,3 @@ class Room:
         self.window.mainloop()
 
 
-
-room = Room()
-room.ConsultRoom("Subha","Deep")

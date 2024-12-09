@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox ,ttk
 import datetime
 import Database
 import ConsultationDB
@@ -132,6 +132,12 @@ class Patient:
         History.pack(pady=10,side='left')
         LogOut = Button(Navbar, text="LogOut", command=LogOutFunc, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         LogOut.pack(pady=10,side="left")
+
+        def AI(msg):
+            pass
+
+        AIButton = ttk.Button(self.window,Text="Ask AI Doctor",command=AI,padding=5)
+        AIButton.place(x=900,y=600)
 
 
         self.window.mainloop()

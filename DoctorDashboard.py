@@ -48,4 +48,3 @@ class Doctor:
         Button(self.window, text="LogOut", command=LogOut, bg="#4682B4", fg="white", font=("Helvetica", 11, "bold"),padx=20,pady=5).place(x=165,y=2)
         self.window.mainloop()
 
-doc = Doctor().DoctorDashboard("admin")
