@@ -11,6 +11,7 @@ class Patient:
         self.window.title("MedCare - Patient Dashboard")
         self.window.iconbitmap("./Static/MedCareLogo.ico")
         Name = Database.GetPatientName(id)
+        print(id)
 
         Footer = Frame(self.window,height=20,bg="cyan").pack(fill="x",side="bottom")
         Navbar = Frame(self.window,bg="cyan",height=55)
@@ -141,4 +142,5 @@ class Patient:
 
 
         self.window.mainloop()
+
 
