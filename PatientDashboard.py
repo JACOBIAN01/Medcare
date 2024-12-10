@@ -134,13 +134,19 @@ class Patient:
         LogOut = Button(Navbar, text="LogOut", command=LogOutFunc, bg="#4682B4", fg="white", font=("Helvetica", 12, "bold"),relief="groove")
         LogOut.pack(pady=10,side="left")
 
-        def AI(msg):
-            pass
+        def AI():
+            aiframe = Frame(self.window,height=600,width=600,bg='cyan')
+            aiframe.place(x=950,y=40)
+            # askLabel = Label(aiframe,text="Ask Your Personalized AI Doctor")
+            # askLabel.pack()
 
-        AIButton = ttk.Button(self.window,Text="Ask AI Doctor",command=AI,padding=5)
-        AIButton.place(x=900,y=600)
+
+        AIButton = ttk.Button(self.window,text="Ask AI Doctor",command=AI,padding=10)
+        AIButton.place(x=1150,y=650)
 
 
         self.window.mainloop()
 
 
+pt = Patient()
+pt.PatientDashboard('admin')
