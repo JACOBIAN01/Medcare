@@ -137,8 +137,20 @@ class Patient:
         def AI():
             aiframe = Frame(self.window,height=600,width=600,bg='cyan')
             aiframe.place(x=950,y=40)
-            # askLabel = Label(aiframe,text="Ask Your Personalized AI Doctor")
-            # askLabel.pack()
+            askLabel = Label(aiframe,text="Ask Your Personalized AI Doctor",fg='black',bg='cyan',font=('Arial',12,'bold'))
+            askLabel.place(x=15,y=20)
+
+            aitext = Text(aiframe,height=10,width=38)
+            aitext.place(x=10,y=50)
+
+            prompt = Entry(aiframe,font=('Arial',10,'bold'))
+            prompt.place(x=10,y=200)
+            
+            def CloseFrame():
+                aiframe.destroy()
+
+            CloseAI = Button(aiframe,text="Close",bg='red',fg ='white',command=CloseFrame,padx=10,pady=4)
+            CloseAI.place(x=230,y=550)
 
 
         AIButton = ttk.Button(self.window,text="Ask AI Doctor",command=AI,padding=10)
@@ -148,5 +160,3 @@ class Patient:
         self.window.mainloop()
 
 
-pt = Patient()
-pt.PatientDashboard('admin')
